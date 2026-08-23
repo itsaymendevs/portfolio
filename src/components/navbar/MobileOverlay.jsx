@@ -43,25 +43,29 @@ function MobileOverlay({ isOpen, onClose }) {
       </div>
 
       <ul className="flex flex-1 flex-col items-center justify-center gap-2 px-6">
-        {NAV_LINKS.map((link, i) => (
-          <li key={link.label}>
-            <a
-              href={link.href}
-              onClick={onClose}
-              className={`block py-3 text-center text-[32px] font-extralight tracking-tight transition-colors duration-200 ${
-                isDark ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"
-              }`}
-              style={{
-                transitionDelay: isOpen ? `${60 + i * 60}ms` : "0ms",
-                opacity: isOpen ? 1 : 0,
-                transform: isOpen ? "scale(1)" : "scale(0.92)",
-                transition: "opacity 300ms ease, transform 300ms ease, color 200ms ease",
-              }}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
+        {NAV_LINKS.map((link, i) => {
+          const isCatering = link.label === "Catering";
+          return (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                onClick={isCatering ? (e) => e.preventDefault() : onClose}
+                className={`block py-3 text-center text-[32px] font-extralight tracking-tight transition-colors duration-200 ${
+                  isDark ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"
+                } ${isCatering ? "pointer-events-none cursor-default opacity-40" : ""}`}
+                style={{
+                  transitionDelay: isOpen ? `${60 + i * 60}ms` : "0ms",
+                  opacity: isOpen ? 1 : 0,
+                  transform: isOpen ? "scale(1)" : "scale(0.92)",
+                  transition: "opacity 300ms ease, transform 300ms ease, color 200ms ease",
+                }}
+                aria-disabled={isCatering || undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
 
       <div

@@ -34,7 +34,7 @@ const COLUMN_GROUPS = [
   { heading: "Social Media", items: SOCIAL },
 ];
 
-export default function Footer() {
+export default function Footer({ ready = true }) {
   const [wordsVisible, setWordsVisible] = useState(0);
   const [contentVisible, setContentVisible] = useState(false);
   const footerRef = useRef(null);
@@ -42,6 +42,7 @@ export default function Footer() {
   const isDark = theme === "dark";
 
   useEffect(() => {
+    if (!ready) return;
     const el = footerRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -59,7 +60,7 @@ export default function Footer() {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [ready]);
 
   const footerBg = "bg-[#111]";
   const taglineColor = "text-white";
@@ -131,15 +132,16 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {col.items.map((link) => {
                     const isNoop = link.href === "#";
-                    // keep Home ("#") functional — only Social placeholders are noop
                     const isSocialNoop = isNoop && col.heading === "Social Media";
+                    const isCatering = link.label === "Catering";
+                    const isDisabled = isSocialNoop || isCatering;
                     return (
                       <li key={link.label}>
                         <a
                           href={link.href}
-                          onClick={isSocialNoop ? (e) => e.preventDefault() : undefined}
-                          className={`text-sm transition-colors ${linkColor} ${hoverColor} ${isSocialNoop ? "pointer-events-none cursor-default" : ""}`}
-                          aria-disabled={isSocialNoop || undefined}
+                          onClick={isDisabled ? (e) => e.preventDefault() : undefined}
+                          className={`text-sm transition-colors ${linkColor} ${hoverColor} ${isDisabled ? "pointer-events-none cursor-default opacity-40" : ""}`}
+                          aria-disabled={isDisabled || undefined}
                         >
                           {link.label}
                         </a>

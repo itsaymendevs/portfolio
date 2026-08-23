@@ -97,15 +97,24 @@ function TiltCard({ card, isShown, isDark, index }) {
   );
 }
 
-function MissionSection() {
+function MissionSection({ ready = true }) {
   const [visibleWords, setVisibleWords] = useState(0);
   const [bodyVisible, setBodyVisible] = useState(false);
   const [visibleCards, setVisibleCards] = useState(0);
+  const [showArrows, setShowArrows] = useState(false);
   const sectionRef = useRef(null);
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
   useEffect(() => {
+    if (visibleWords === TITLE_WORDS.length && visibleWords > 0) {
+      const t = setTimeout(() => setShowArrows(true), 280);
+      return () => clearTimeout(t);
+    }
+  }, [visibleWords]);
+
+  useEffect(() => {
+    if (!ready) return;
     const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -126,7 +135,7 @@ function MissionSection() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [ready]);
 
   const sectionBg = isDark ? "bg-neutral-950" : "bg-white";
   const titleColor = isDark ? "text-white" : "text-black";
@@ -164,6 +173,58 @@ function MissionSection() {
         )}
 
       </div>
+      {/* short random bent arrows — behind content */}
+      <svg
+        className="pointer-events-none absolute inset-0 hidden lg:block"
+        viewBox="0 0 1200 560"
+        fill="none"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        style={{
+          zIndex: 0,
+          opacity: showArrows ? 1 : 0,
+          transform: showArrows ? "translateY(0)" : "translateY(8px)",
+          transition: "opacity 700ms ease, transform 700ms cubic-bezier(0.16,1,0.3,1)",
+        }}
+      >
+        <defs>
+          <marker id="mission-arrow-whole" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M 0 0 L 7 4 L 0 8 z" fill={isDark ? "rgba(255,255,255,0.16)" : "rgba(0,0,0,0.18)"} />
+          </marker>
+        </defs>
+        <path
+          d="M 118 118 C 152 86, 242 86, 276 118"
+          stroke={isDark ? "rgba(255,255,255,0.11)" : "rgba(0,0,0,0.14)"}
+          strokeWidth="1.25"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-whole)"
+        />
+        <path
+          d="M 640 142 C 672 112, 748 168, 782 138"
+          stroke={isDark ? "rgba(255,255,255,0.11)" : "rgba(0,0,0,0.14)"}
+          strokeWidth="1.25"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-whole)"
+        />
+        <path
+          d="M 1042 248 C 1068 276, 1068 342, 998 368"
+          stroke={isDark ? "rgba(255,255,255,0.11)" : "rgba(0,0,0,0.14)"}
+          strokeWidth="1.25"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-whole)"
+        />
+        <path
+          d="M 512 398 C 478 432, 398 432, 364 398"
+          stroke={isDark ? "rgba(255,255,255,0.11)" : "rgba(0,0,0,0.14)"}
+          strokeWidth="1.25"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-whole)"
+        />
+      </svg>
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
         <div className="max-w-xl">
           <h2 className={`text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.05] tracking-tight ${titleColor}`}>

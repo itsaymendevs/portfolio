@@ -77,7 +77,7 @@ function Card({ meal, offset, index }) {
   );
 }
 
-export default function SampleMealsSection() {
+export default function SampleMealsSection({ ready = true }) {
   const [visible, setVisible] = useState(false);
   const [visibleWords, setVisibleWords] = useState(0);
   const [whatWeDoVisible, setWhatWeDoVisible] = useState(false);
@@ -109,6 +109,7 @@ export default function SampleMealsSection() {
   const CAPTION_TEXT = "— We craft every meal from scratch.\nFresh ingredients, bold flavors, delivered to you.";
 
   useEffect(() => {
+    if (!ready) return;
     const el = sectionRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -124,9 +125,10 @@ export default function SampleMealsSection() {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [ready]);
 
   useEffect(() => {
+    if (!ready) return;
     const el = bottomSectionRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -150,9 +152,10 @@ export default function SampleMealsSection() {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [ready]);
 
   useEffect(() => {
+    if (!ready) return;
     const el = videoRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -161,9 +164,10 @@ export default function SampleMealsSection() {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [ready]);
 
   useEffect(() => {
+    if (!ready) return;
     const el = subscribeRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -182,7 +186,7 @@ export default function SampleMealsSection() {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [ready]);
 
   const doSlide = useCallback(() => {
     const isMobile = window.innerWidth < 768;

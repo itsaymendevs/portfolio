@@ -103,14 +103,17 @@ function NavbarA() {
             {NAV_LINKS.map((link, i) => {
               const isActive = activeIdx === i;
               const isHovered = hoveredIdx === i;
+              const isCatering = link.label === "Catering";
               return (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    onMouseEnter={() => setHoveredIdx(i)}
+                    onClick={isCatering ? (e) => e.preventDefault() : undefined}
+                    onMouseEnter={() => !isCatering && setHoveredIdx(i)}
                     className={`relative block overflow-hidden py-2 ${
                       scrolled ? "px-3 text-[13px]" : "px-2 text-[15px]"
-                    }`}
+                    } ${isCatering ? "pointer-events-none cursor-default opacity-40" : ""}`}
+                    aria-disabled={isCatering || undefined}
                   >
                     <span
                       className="block transition-colors duration-200"

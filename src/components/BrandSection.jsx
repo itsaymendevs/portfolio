@@ -11,7 +11,7 @@ const PLANS = [
   { name: "Weight Loss", price: "AED 127 per day", img: "/realmeal/meal-plan-4.avif" },
 ];
 
-function BrandSection() {
+function BrandSection({ ready = true }) {
   const [visible, setVisible] = useState(false);
   const [visibleWords, setVisibleWords] = useState(0);
   const [showCards, setShowCards] = useState(false);
@@ -25,6 +25,7 @@ function BrandSection() {
   const isDark = theme === "dark";
 
   useEffect(() => {
+    if (!ready) return;
     const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -42,20 +43,51 @@ function BrandSection() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [ready]);
 
+  // init at middle set for infinite loop
+  useEffect(() => {
+    if (!showCards) return;
+    const track = trackRef.current;
+    if (!track || !track.children[0]) return;
+    const cardW = track.children[0].offsetWidth + 24 || 304;
+    posRef.current = -PLANS.length * cardW;
+    track.style.transition = "none";
+    track.style.transform = `translateX(${posRef.current}px)`;
+    void track.offsetWidth;
+    track.style.transition = "transform 600ms cubic-bezier(0.25, 1, 0.5, 1)";
+  }, [showCards]);
+
+  const startProgressRef = useRef(null);
   const doScroll = useCallback((dir) => {
     if (autoRef.current) clearTimeout(autoRef.current);
     if (progressRef.current) cancelAnimationFrame(progressRef.current);
     setProgress(0);
     const track = trackRef.current;
     if (!track) return;
-    const cardW = track.children[0]?.offsetWidth + 24 || 300;
+    const cardW = track.children[0]?.offsetWidth + 24 || 304;
+    const singleSet = PLANS.length * cardW;
     posRef.current += dir * cardW;
-    const max = track.scrollWidth - cardW * 3;
-    posRef.current = Math.max(-max, Math.min(0, posRef.current));
+    track.style.transition = "transform 600ms cubic-bezier(0.25, 1, 0.5, 1)";
     track.style.transform = `translateX(${posRef.current}px)`;
-    startProgress();
+    setTimeout(() => {
+      if (posRef.current <= -singleSet * 2) {
+        track.style.transition = "none";
+        posRef.current += singleSet;
+        track.style.transform = `translateX(${posRef.current}px)`;
+        void track.offsetWidth;
+        track.style.transition = "transform 600ms cubic-bezier(0.25, 1, 0.5, 1)";
+      } else if (posRef.current > -singleSet + 0.5) {
+        if (dir > 0) {
+          track.style.transition = "none";
+          posRef.current -= singleSet;
+          track.style.transform = `translateX(${posRef.current}px)`;
+          void track.offsetWidth;
+          track.style.transition = "transform 600ms cubic-bezier(0.25, 1, 0.5, 1)";
+        }
+      }
+    }, 610);
+    startProgressRef.current?.();
   }, []);
 
   const startProgress = useCallback(() => {
@@ -73,6 +105,8 @@ function BrandSection() {
     };
     progressRef.current = requestAnimationFrame(animate);
   }, [doScroll]);
+
+  useEffect(() => { startProgressRef.current = startProgress; }, [startProgress]);
 
   useEffect(() => {
     if (!showCards) return;
@@ -105,7 +139,6 @@ function BrandSection() {
 
    return (
     <section ref={sectionRef} id="meal-plans" className={`relative overflow-hidden px-6 py-20 sm:px-12 sm:py-24 md:px-16 md:py-28 lg:px-20 lg:py-32 ${sectionBg}`}>
-      <span id="catering" className="absolute top-0" aria-hidden="true" />
       {/* Fading design pattern — subtle, premium */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         {/* dot grid with soft radial fade */}

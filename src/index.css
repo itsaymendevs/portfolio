@@ -284,6 +284,12 @@ html {
   animation: whatsapp-bg 3s ease infinite;
 }
 
+.chatbot-btn {
+  background: linear-gradient(135deg, #111111, #1e1e1e, #111111, #252525);
+  background-size: 300% 300%;
+  animation: whatsapp-bg 3s ease infinite;
+}
+
 .footer-title-dimmed {
   background: linear-gradient(
     135deg,

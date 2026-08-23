@@ -4,7 +4,7 @@ import { useTheme } from "./ThemeProvider";
 
 const WORDS = [
   "Freshness.",
-  "Nourishment.",
+  "Health.",
   "Wellness.",
   "Flavor.",
   "Quality.",
@@ -14,7 +14,7 @@ const TYPING_SPEED = 110;
 const DELETING_SPEED = 65;
 const PAUSE_AFTER_TYPE = 2200;
 
-function HeroV2() {
+function HeroV2({ ready = true }) {
   const [wordIdx, setWordIdx] = useState(0);
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -23,11 +23,13 @@ function HeroV2() {
   const isDark = theme === "dark";
 
   useEffect(() => {
-    const timer = setTimeout(() => setMoveRight(true), 1200);
+    if (!ready) return;
+    const timer = setTimeout(() => setMoveRight(true), 300);
     return () => clearTimeout(timer);
-  }, []);
+  }, [ready]);
 
   useEffect(() => {
+    if (!ready) return;
     const current = WORDS[wordIdx];
     const timeout = setTimeout(
       () => {
@@ -47,7 +49,7 @@ function HeroV2() {
       isDeleting ? DELETING_SPEED : TYPING_SPEED
     );
     return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIdx]);
+  }, [text, isDeleting, wordIdx, ready]);
 
   const scrollToContent = useCallback(() => {
     const target = document.getElementById("meal-plans");

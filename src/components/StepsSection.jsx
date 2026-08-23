@@ -8,7 +8,7 @@ const STEPS = [
   { num: "03", title: "Delivered to You", desc: "Freshly prepared meals arrive at your door, ready to enjoy in minutes with zero cleanup.", icon: Truck },
 ];
 
-function StepsSection() {
+function StepsSection({ ready = true }) {
   const [visibleWords, setVisibleWords] = useState(0);
   const [showCards, setShowCards] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
@@ -17,6 +17,7 @@ function StepsSection() {
   const isDark = theme === "dark";
 
   useEffect(() => {
+    if (!ready) return;
     const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -33,7 +34,7 @@ function StepsSection() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [ready]);
 
   useEffect(() => {
     if (!showCards) return;
