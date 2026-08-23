@@ -102,7 +102,7 @@ function NavbarD() {
           {/* CTA — with breathing glow */}
           <div className="pointer-events-auto shrink-0">
             <a
-              href="#order"
+              href="#meal-plans"
               className={`group relative hidden rounded-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 sm:inline-flex ${
                 scrolled
                   ? "px-5 py-1.5 text-[13px] font-semibold"

@@ -101,7 +101,7 @@ function NavbarB() {
           {/* CTA — filled, scales on hover */}
           <div className="pointer-events-auto shrink-0">
             <a
-              href="#order"
+              href="#meal-plans"
               className={`hidden rounded-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/15 hover:scale-[1.03] active:scale-[0.98] sm:inline-flex ${
                 scrolled
                   ? "px-5 py-1.5 text-[13px] font-semibold"

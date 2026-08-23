@@ -9,10 +9,10 @@ const NAVIGATE = [
 ];
 
 const SUPPORT = [
-  { label: "FAQs", href: "#" },
+  { label: "FAQs", href: "#faqs" },
   { label: "Contact Us", href: "#contact" },
-  { label: "Help Centre", href: "#" },
-  { label: "Live Chat", href: "#" },
+  { label: "Help Centre", href: "#faqs" },
+  { label: "Live Chat", href: "#contact" },
 ];
 
 const SOCIAL = [
@@ -48,14 +48,14 @@ export default function Footer() {
       ([entry]) => {
         if (entry.isIntersecting) {
           TAGLINE_WORDS.forEach((_, i) => {
-            setTimeout(() => setWordsVisible(i + 1), 150 + i * 80);
+            setTimeout(() => setWordsVisible(i + 1), 50 + i * 35);
           });
-          const contentDelay = 150 + TAGLINE_WORDS.length * 80 + 300;
+          const contentDelay = 50 + TAGLINE_WORDS.length * 35 + 80;
           setTimeout(() => setContentVisible(true), contentDelay);
           obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -71,7 +71,7 @@ export default function Footer() {
   const copyrightHover = "hover:text-white/60";
 
   return (
-    <footer ref={footerRef} className={`relative overflow-hidden px-6 pt-16 sm:px-12 md:px-16 lg:px-20 border-t ${borderColor} ${footerBg}`}>
+    <footer ref={footerRef} id="contact" className={`relative overflow-hidden px-6 pt-16 sm:px-12 md:px-16 lg:px-20 border-t ${borderColor} ${footerBg}`}>
       {/* subtle pattern — footer */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
@@ -129,13 +129,23 @@ export default function Footer() {
                   {col.heading}
                 </h3>
                 <ul className="space-y-3">
-                  {col.items.map((link) => (
-                    <li key={link.label}>
-                      <a href={link.href} className={`text-sm transition-colors ${linkColor} ${hoverColor}`}>
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
+                  {col.items.map((link) => {
+                    const isNoop = link.href === "#";
+                    // keep Home ("#") functional — only Social placeholders are noop
+                    const isSocialNoop = isNoop && col.heading === "Social Media";
+                    return (
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          onClick={isSocialNoop ? (e) => e.preventDefault() : undefined}
+                          className={`text-sm transition-colors ${linkColor} ${hoverColor} ${isSocialNoop ? "pointer-events-none cursor-default" : ""}`}
+                          aria-disabled={isSocialNoop || undefined}
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
@@ -168,8 +178,8 @@ export default function Footer() {
             </h1>
             <div className="mb-8 flex items-center gap-6 md:mb-12 lg:mb-16">
               <span className={`text-sm ${copyrightColor}`}>&copy; 2026 All rights reserved.</span>
-              <a href="#" className={`text-sm transition-colors ${copyrightColor} ${copyrightHover}`}>Privacy</a>
-              <a href="#" className={`text-sm transition-colors ${copyrightColor} ${copyrightHover}`}>Terms &amp; Conditions</a>
+              <a href="#" onClick={(e) => e.preventDefault()} className={`pointer-events-none cursor-default text-sm transition-colors ${copyrightColor}`}>Privacy</a>
+              <a href="#" onClick={(e) => e.preventDefault()} className={`pointer-events-none cursor-default text-sm transition-colors ${copyrightColor}`}>Terms &amp; Conditions</a>
             </div>
           </div>
         </div>

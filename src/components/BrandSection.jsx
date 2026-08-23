@@ -30,15 +30,15 @@ function BrandSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), 300);
+          setTimeout(() => setVisible(true), 80);
           TITLE_WORDS.forEach((_, i) => {
-            setTimeout(() => setVisibleWords((v) => v + 1), 600 + i * 200);
+            setTimeout(() => setVisibleWords((v) => v + 1), 120 + i * 70);
           });
-          setTimeout(() => setShowCards(true), 600 + TITLE_WORDS.length * 200 + 400);
+          setTimeout(() => setShowCards(true), 120 + TITLE_WORDS.length * 70 + 120);
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.08 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -104,7 +104,8 @@ function BrandSection() {
   const arrowHoverBorder = isDark ? "hover:border-white/25" : "hover:border-black/25";
 
    return (
-    <section ref={sectionRef} className={`relative overflow-hidden px-6 py-20 sm:px-12 sm:py-24 md:px-16 md:py-28 lg:px-20 lg:py-32 ${sectionBg}`}>
+    <section ref={sectionRef} id="meal-plans" className={`relative overflow-hidden px-6 py-20 sm:px-12 sm:py-24 md:px-16 md:py-28 lg:px-20 lg:py-32 ${sectionBg}`}>
+      <span id="catering" className="absolute top-0" aria-hidden="true" />
       {/* Fading design pattern — subtle, premium */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         {/* dot grid with soft radial fade */}
@@ -211,7 +212,7 @@ function BrandSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute inset-0 flex flex-col justify-between p-5">
                   <div className="flex justify-end">
-                    <a href="#order" className="order-now-btn rounded-full px-5 py-1.5 text-xs font-medium text-white backdrop-blur-sm transition-all duration-300">
+                    <a href="#meal-plans" className="order-now-btn rounded-full px-5 py-1.5 text-xs font-medium text-white backdrop-blur-sm transition-all duration-300">
                       Order Now
                     </a>
                   </div>

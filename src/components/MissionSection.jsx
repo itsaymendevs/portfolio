@@ -112,17 +112,17 @@ function MissionSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           TITLE_WORDS.forEach((_, i) => {
-            setTimeout(() => setVisibleWords(i + 1), 200 + i * 220);
+            setTimeout(() => setVisibleWords(i + 1), 60 + i * 70);
           });
-          const bodyDelay = 200 + TITLE_WORDS.length * 220 + 300;
+          const bodyDelay = 60 + TITLE_WORDS.length * 70 + 90;
           setTimeout(() => setBodyVisible(true), bodyDelay);
           CARDS.forEach((_, i) => {
-            setTimeout(() => setVisibleCards((v) => v + 1), bodyDelay + 400 + i * 180);
+            setTimeout(() => setVisibleCards((v) => v + 1), bodyDelay + 80 + i * 70);
           });
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.08 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -134,7 +134,8 @@ function MissionSection() {
   const bodyColor = isDark ? "text-white/50" : "text-black/50";
 
   return (
-    <section ref={sectionRef} id="mission" className={`relative overflow-hidden px-6 py-28 sm:px-12 md:px-16 md:py-36 lg:px-20 lg:py-44 ${sectionBg}`}>
+    <section ref={sectionRef} id="about" className={`relative overflow-hidden px-6 py-28 sm:px-12 md:px-16 md:py-36 lg:px-20 lg:py-44 ${sectionBg}`}>
+      <span id="mission" className="absolute top-0" aria-hidden="true" />
       {/* fading line pattern — matches "Pick Your Meal Plan" */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div

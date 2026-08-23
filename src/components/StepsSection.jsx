@@ -23,13 +23,13 @@ function StepsSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           ["How", "to", "Order"].forEach((_, i) => {
-            setTimeout(() => setVisibleWords(i + 1), 300 + i * 300);
+            setTimeout(() => setVisibleWords(i + 1), 60 + i * 80);
           });
-          setTimeout(() => setShowCards(true), 1400);
+          setTimeout(() => setShowCards(true), 380);
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.08 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -60,20 +60,8 @@ function StepsSection() {
   const descInactiveColor = isDark ? "text-white/40" : "text-black/35";
 
    return (
-    <section ref={sectionRef} className={`relative overflow-hidden ${sectionBg}`}>
-      {/* dots only */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.07)" : "rgba(120,65,15,0.11)"} 1.2px, transparent 0)`,
-            backgroundSize: "36px 36px",
-            backgroundPosition: "18px 18px",
-            maskImage: "radial-gradient(ellipse 72% 60% at 50% 45%, black 34%, transparent 76%)",
-            WebkitMaskImage: "radial-gradient(ellipse 72% 60% at 50% 45%, black 34%, transparent 76%)",
-          }}
-        />
-      </div>
+    <section ref={sectionRef} id="how-to-order" className={`relative overflow-hidden ${sectionBg}`}>
+
       <div className="relative px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
           <span className={`whitespace-nowrap text-[8vw] font-bold uppercase tracking-tight select-none sm:text-[6vw] md:text-[5vw] lg:text-[4vw] ${bgTextColor}`}>

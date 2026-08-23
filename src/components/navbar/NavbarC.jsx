@@ -90,7 +90,7 @@ function NavbarC() {
           {/* CTA — bordered, gradient sweep */}
           <div className="pointer-events-auto shrink-0">
             <a
-              href="#order"
+              href="#meal-plans"
               className={`group relative hidden overflow-hidden rounded-full sm:inline-flex ${
                 scrolled
                   ? "px-5 py-1.5 text-[13px] font-semibold"

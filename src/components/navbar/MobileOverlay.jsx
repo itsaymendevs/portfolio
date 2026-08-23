@@ -74,7 +74,7 @@ function MobileOverlay({ isOpen, onClose }) {
         }}
       >
         <a
-          href="#order"
+          href="#meal-plans"
           onClick={onClose}
           className="flex w-full items-center justify-center rounded-full bg-primary py-4 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >

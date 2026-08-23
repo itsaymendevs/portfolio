@@ -152,7 +152,7 @@ function NavbarA() {
             </button>
 
             <a
-              href="#order"
+              href="#meal-plans"
               className={`nav-cta-gradient relative hidden overflow-hidden rounded-full px-6 py-2.5 text-[15px] font-medium text-primary-foreground shadow-md transition-all duration-300 hover:shadow-lg sm:inline-flex ${
                 scrolled ? "px-5 py-1.5 text-[13px]" : ""
               }`}

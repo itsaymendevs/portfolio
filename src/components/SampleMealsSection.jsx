@@ -33,13 +33,13 @@ function WordByWord({ text, visible }) {
       i++;
       setCount(i);
       if (i >= words.length) clearInterval(interval);
-    }, 300);
+    }, 70);
     return () => clearInterval(interval);
   }, [visible, text]);
   return (
     <span>
       {words.map((word, j) => (
-        <span key={j} className="mr-2 inline-block transition-opacity duration-500" style={{ opacity: j < count ? 1 : 0 }}>
+        <span key={j} className="mr-2 inline-block transition-opacity duration-300" style={{ opacity: j < count ? 1 : 0 }}>
           {word}{" "}
         </span>
       ))}
@@ -116,11 +116,11 @@ export default function SampleMealsSection() {
         if (e.isIntersecting) {
           setVisible(true);
           const cards = el.querySelectorAll(".card-appear");
-          cards.forEach((card, i) => { setTimeout(() => card.classList.add("visible"), i * 120); });
+          cards.forEach((card, i) => { setTimeout(() => card.classList.add("visible"), i * 50); });
           obs.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -132,21 +132,21 @@ export default function SampleMealsSection() {
     const obs = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          HEADLINE_WORDS.forEach((_, i) => { setTimeout(() => setHeadlineWords(i + 1), i * 120); });
-          setTimeout(() => setHeadlineWords(HEADLINE_WORDS.length + 1), HEADLINE_WORDS.length * 120 + 200);
-          setTimeout(() => setWhatWeDoVisible(true), 300);
+          HEADLINE_WORDS.forEach((_, i) => { setTimeout(() => setHeadlineWords(i + 1), i * 55); });
+          setTimeout(() => setHeadlineWords(HEADLINE_WORDS.length + 1), HEADLINE_WORDS.length * 55 + 80);
+          setTimeout(() => setWhatWeDoVisible(true), 120);
           setTimeout(() => {
             let i = 0;
             const interval = setInterval(() => {
               i++;
               setTypedText(CAPTION_TEXT.slice(0, i));
               if (i >= CAPTION_TEXT.length) clearInterval(interval);
-            }, 30);
-          }, 500);
+            }, 18);
+          }, 180);
           obs.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -157,7 +157,7 @@ export default function SampleMealsSection() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setVideoVisible(true); obs.disconnect(); } },
-      { threshold: 0.3 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -172,13 +172,13 @@ export default function SampleMealsSection() {
           setSubscribeCardVisible(true);
           const words = ["Be", "Part", "of", "Real", "Meal", "That", "Feels", "Like", "Home"];
           setTimeout(() => {
-            words.forEach((_, i) => { setTimeout(() => setSubscribeTitle(i + 1), i * 150); });
-            setTimeout(() => setSubscribeContent(true), words.length * 150 + 300);
-          }, 600);
+            words.forEach((_, i) => { setTimeout(() => setSubscribeTitle(i + 1), i * 65); });
+            setTimeout(() => setSubscribeContent(true), words.length * 65 + 100);
+          }, 140);
           obs.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -251,9 +251,11 @@ export default function SampleMealsSection() {
     {/* Sample Meals Grid — always dark */}
     <section
       ref={sectionRef}
+      id="sample-meals"
       className={`relative overflow-hidden px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24 ${sampleSectionBg}`}
     >
-      {/* distinct pattern — no edge colors */}
+      <span id="meals" className="absolute top-0" aria-hidden="true" />
+      {/* lines only — no dots */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
           className="absolute inset-0"
@@ -269,15 +271,6 @@ export default function SampleMealsSection() {
             backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 32px)",
             maskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
             WebkitMaskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0)",
-            backgroundSize: "22px 22px",
-            maskImage: "radial-gradient(ellipse 70% 58% at 50% 42%, black 28%, transparent 72%)",
-            WebkitMaskImage: "radial-gradient(ellipse 70% 58% at 50% 42%, black 28%, transparent 72%)",
           }}
         />
       </div>
@@ -356,23 +349,9 @@ export default function SampleMealsSection() {
     </section>
 
     {/* Bottom Headline + FAQ + Video */}
-    <section ref={bottomSectionRef} className={`relative overflow-hidden px-6 pb-20 pt-12 sm:pb-24 sm:pt-16 md:pb-28 md:pt-20 lg:pb-32 lg:pt-24 ${bottomBg}`}>
-      {/* dots only */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.09)" : "rgba(120,65,15,0.14)"} 1px, transparent 0)`,
-            backgroundSize: "28px 28px",
-            maskImage: isDark
-              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
-              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
-            WebkitMaskImage: isDark
-              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
-              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
-          }}
-        />
-      </div>
+    <section ref={bottomSectionRef} id="faqs" className={`relative overflow-hidden px-6 pb-20 pt-12 sm:pb-24 sm:pt-16 md:pb-28 md:pt-20 lg:pb-32 lg:pt-24 ${bottomBg}`}>
+      <span id="faq" className="absolute top-0" aria-hidden="true" />
+
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h2 className={`w-full text-xl font-bold leading-tight tracking-tight sm:text-2xl md:w-auto md:max-w-[50%] md:text-3xl lg:text-4xl ${headlineColor}`}>
@@ -480,6 +459,7 @@ export default function SampleMealsSection() {
     {/* Subscribe — theme-aware */}
     <section
       ref={subscribeRef}
+      id="subscribe"
       className="relative overflow-hidden px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24"
       style={{
         backgroundImage: "url('/realmeal/subscribe.jpg')",
@@ -489,6 +469,8 @@ export default function SampleMealsSection() {
       }}
     >
       <div className="absolute inset-0 bg-black/50" />
+      <span id="order" className="absolute top-0" aria-hidden="true" />
+      <span id="consultation" className="absolute top-0" aria-hidden="true" />
       <div
         className="relative z-10 mx-auto max-w-7xl text-center"
         style={{
