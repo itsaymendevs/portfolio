@@ -1,6 +1,6 @@
 function Logo({ size = 28, showText = true, className = "", textClassName = "", imgClassName = "", invert = false }) {
   return (
-    <a href="#" className={className}>
+    <a href="#top" className={className}>
       <img
         src="/realmeal/logo.avif"
         alt="Real Meal"
