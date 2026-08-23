@@ -255,7 +255,6 @@ export default function SampleMealsSection() {
     >
       {/* distinct pattern — no edge colors */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {/* diagonal hatch — 45° */}
         <div
           className="absolute inset-0"
           style={{
@@ -264,7 +263,6 @@ export default function SampleMealsSection() {
             WebkitMaskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
           }}
         />
-        {/* counter diagonal — subtle */}
         <div
           className="absolute inset-0"
           style={{
@@ -273,7 +271,6 @@ export default function SampleMealsSection() {
             WebkitMaskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
           }}
         />
-        {/* fine dots — different scale */}
         <div
           className="absolute inset-0"
           style={{
@@ -360,25 +357,19 @@ export default function SampleMealsSection() {
 
     {/* Bottom Headline + FAQ + Video */}
     <section ref={bottomSectionRef} className={`relative overflow-hidden px-6 pb-20 pt-12 sm:pb-24 sm:pt-16 md:pb-28 md:pt-20 lg:pb-32 lg:pt-24 ${bottomBg}`}>
-      {/* distinct pattern — large grid + sparse plus */}
+      {/* dots only */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `linear-gradient(${isDark ? "rgba(255,255,255,0.022)" : "rgba(0,0,0,0.028)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(255,255,255,0.022)" : "rgba(0,0,0,0.028)"} 1px, transparent 1px)`,
-            backgroundSize: "72px 72px",
-            maskImage: "radial-gradient(ellipse 74% 60% at 50% 46%, black 24%, transparent 76%)",
-            WebkitMaskImage: "radial-gradient(ellipse 74% 60% at 50% 46%, black 24%, transparent 76%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.028)" : "rgba(0,0,0,0.03)"} 1.3px, transparent 0)`,
-            backgroundSize: "48px 48px",
-            backgroundPosition: "24px 24px",
-            maskImage: "radial-gradient(ellipse 68% 56% at 50% 52%, black 18%, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse 68% 56% at 50% 52%, black 18%, transparent 70%)",
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.09)" : "rgba(120,65,15,0.14)"} 1px, transparent 0)`,
+            backgroundSize: "28px 28px",
+            maskImage: isDark
+              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
+              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
+            WebkitMaskImage: isDark
+              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
+              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
           }}
         />
       </div>

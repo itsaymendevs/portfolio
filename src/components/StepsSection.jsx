@@ -61,18 +61,8 @@ function StepsSection() {
 
    return (
     <section ref={sectionRef} className={`relative overflow-hidden ${sectionBg}`}>
-      {/* distinct pattern — vertical ticks + offset dots */}
+      {/* dots only */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {/* vertical dashed ticks */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `repeating-linear-gradient(90deg, ${isDark ? "rgba(255,255,255,0.055)" : "rgba(120,65,15,0.09)"} 0 1px, transparent 1px 44px)`,
-            maskImage: "radial-gradient(ellipse 78% 62% at 50% 48%, black 28%, transparent 74%)",
-            WebkitMaskImage: "radial-gradient(ellipse 78% 62% at 50% 48%, black 28%, transparent 74%)",
-          }}
-        />
-        {/* staggered dots — offset grid */}
         <div
           className="absolute inset-0"
           style={{

@@ -72,7 +72,7 @@ export default function Footer() {
 
   return (
     <footer ref={footerRef} className={`relative overflow-hidden px-6 pt-16 sm:px-12 md:px-16 lg:px-20 border-t ${borderColor} ${footerBg}`}>
-      {/* subtle pattern — footer distinct */}
+      {/* subtle pattern — footer */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
           className="absolute inset-0"

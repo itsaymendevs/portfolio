@@ -121,21 +121,18 @@ function BrandSection() {
               : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
           }}
         />
-        {/* fine hairline grid */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(${isDark ? "rgba(255,255,255,0.025)" : "rgba(120,65,15,0.07)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(255,255,255,0.025)" : "rgba(120,65,15,0.07)"} 1px, transparent 1px)`,
-            backgroundSize: "96px 96px",
-            opacity: isDark ? 0.35 : 1,
-            maskImage: isDark
-              ? "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)"
-              : "radial-gradient(ellipse 88% 72% at 50% 42%, black 35%, transparent 78%)",
-            WebkitMaskImage: isDark
-              ? "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)"
-              : "radial-gradient(ellipse 88% 72% at 50% 42%, black 35%, transparent 78%)",
-          }}
-        />
+        {/* fine hairline grid — dark only */}
+        {isDark && (
+          <div
+            className="absolute inset-0 opacity-[0.35]"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)`,
+              backgroundSize: "96px 96px",
+              maskImage: "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)",
+              WebkitMaskImage: "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)",
+            }}
+          />
+        )}
 
 
         {/* dark-only shape — soft centered pill, not corner glows */}
