@@ -62,6 +62,19 @@ function StepsSection({ ready = true }) {
 
    return (
     <section ref={sectionRef} id="how-to-order" className={`relative overflow-hidden ${sectionBg}`}>
+      {!isDark && (
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "radial-gradient(circle at 1px 1px, rgba(120,65,15,0.14) 1px, transparent 0)",
+              backgroundSize: "28px 28px",
+              maskImage: "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
+              WebkitMaskImage: "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
+            }}
+          />
+        </div>
+      )}
 
       <div className="relative px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
