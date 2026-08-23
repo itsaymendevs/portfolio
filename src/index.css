@@ -221,6 +221,32 @@ html {
   box-shadow: 0 4px 24px -2px oklch(0.70 0.20 50 / 0.5);
 }
 
+.order-now-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.68),
+    rgba(32, 32, 32, 0.78),
+    rgba(14, 14, 14, 0.72),
+    rgba(40, 40, 40, 0.76),
+    rgba(0, 0, 0, 0.68)
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.order-now-btn:hover {
+  animation-play-state: paused;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.82),
+    rgba(36, 36, 36, 0.88),
+    rgba(18, 18, 18, 0.84),
+    rgba(44, 44, 44, 0.86),
+    rgba(0, 0, 0, 0.82)
+  );
+  background-size: 300% 300%;
+}
+
 .nav-cta-text-gradient {
   background: linear-gradient(
     135deg,

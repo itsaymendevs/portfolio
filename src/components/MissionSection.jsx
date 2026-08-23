@@ -134,8 +134,39 @@ function MissionSection() {
   const bodyColor = isDark ? "text-white/50" : "text-black/50";
 
   return (
-    <section ref={sectionRef} id="mission" className={`relative px-6 py-28 sm:px-12 md:px-16 md:py-36 lg:px-20 lg:py-44 ${sectionBg}`}>
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
+    <section ref={sectionRef} id="mission" className={`relative overflow-hidden px-6 py-28 sm:px-12 md:px-16 md:py-36 lg:px-20 lg:py-44 ${sectionBg}`}>
+      {/* fading line pattern — matches "Pick Your Meal Plan" */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.09)" : "rgba(120,65,15,0.14)"} 1px, transparent 0)`,
+            backgroundSize: "28px 28px",
+            maskImage: isDark
+              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
+              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
+            WebkitMaskImage: isDark
+              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
+              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(${isDark ? "rgba(255,255,255,0.025)" : "rgba(120,65,15,0.07)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(255,255,255,0.025)" : "rgba(120,65,15,0.07)"} 1px, transparent 1px)`,
+            backgroundSize: "96px 96px",
+            opacity: isDark ? 0.35 : 1,
+            maskImage: isDark
+              ? "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)"
+              : "radial-gradient(ellipse 88% 72% at 50% 42%, black 35%, transparent 78%)",
+            WebkitMaskImage: isDark
+              ? "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)"
+              : "radial-gradient(ellipse 88% 72% at 50% 42%, black 35%, transparent 78%)",
+          }}
+        />
+
+      </div>
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
         <div className="max-w-xl">
           <h2 className={`text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.05] tracking-tight ${titleColor}`}>
             {TITLE_WORDS.map((word, i) => (

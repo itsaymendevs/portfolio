@@ -90,6 +90,7 @@ export default function SampleMealsSection() {
   const [subscribeCardVisible, setSubscribeCardVisible] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const sectionRef = useRef(null);
   const bottomSectionRef = useRef(null);
   const subscribeRef = useRef(null);
@@ -250,9 +251,40 @@ export default function SampleMealsSection() {
     {/* Sample Meals Grid — always dark */}
     <section
       ref={sectionRef}
-      className={`relative px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24 ${sampleSectionBg}`}
+      className={`relative overflow-hidden px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24 ${sampleSectionBg}`}
     >
-      <div className="mx-auto max-w-7xl">
+      {/* distinct pattern — no edge colors */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        {/* diagonal hatch — 45° */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 32px)",
+            maskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
+            WebkitMaskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
+          }}
+        />
+        {/* counter diagonal — subtle */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 32px)",
+            maskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
+            WebkitMaskImage: "radial-gradient(ellipse 74% 62% at 50% 45%, black 30%, transparent 75%)",
+          }}
+        />
+        {/* fine dots — different scale */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0)",
+            backgroundSize: "22px 22px",
+            maskImage: "radial-gradient(ellipse 70% 58% at 50% 42%, black 28%, transparent 72%)",
+            WebkitMaskImage: "radial-gradient(ellipse 70% 58% at 50% 42%, black 28%, transparent 72%)",
+          }}
+        />
+      </div>
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="hidden md:block" style={fadeStyle}>
           <div className="mb-8 flex items-center justify-between">
             <h3 className={`text-5xl font-bold ${sampleTitleColor}`}>Sample Meals.</h3>
@@ -326,9 +358,31 @@ export default function SampleMealsSection() {
       </div>
     </section>
 
-    {/* Bottom Headline + FAQ + Video — always dark */}
-    <section ref={bottomSectionRef} className={`relative px-6 pb-20 pt-12 sm:pb-24 sm:pt-16 md:pb-28 md:pt-20 lg:pb-32 lg:pt-24 ${bottomBg}`}>
-      <div className="mx-auto max-w-7xl">
+    {/* Bottom Headline + FAQ + Video */}
+    <section ref={bottomSectionRef} className={`relative overflow-hidden px-6 pb-20 pt-12 sm:pb-24 sm:pt-16 md:pb-28 md:pt-20 lg:pb-32 lg:pt-24 ${bottomBg}`}>
+      {/* distinct pattern — large grid + sparse plus */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(${isDark ? "rgba(255,255,255,0.022)" : "rgba(0,0,0,0.028)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(255,255,255,0.022)" : "rgba(0,0,0,0.028)"} 1px, transparent 1px)`,
+            backgroundSize: "72px 72px",
+            maskImage: "radial-gradient(ellipse 74% 60% at 50% 46%, black 24%, transparent 76%)",
+            WebkitMaskImage: "radial-gradient(ellipse 74% 60% at 50% 46%, black 24%, transparent 76%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.028)" : "rgba(0,0,0,0.03)"} 1.3px, transparent 0)`,
+            backgroundSize: "48px 48px",
+            backgroundPosition: "24px 24px",
+            maskImage: "radial-gradient(ellipse 68% 56% at 50% 52%, black 18%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse 68% 56% at 50% 52%, black 18%, transparent 70%)",
+          }}
+        />
+      </div>
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h2 className={`w-full text-xl font-bold leading-tight tracking-tight sm:text-2xl md:w-auto md:max-w-[50%] md:text-3xl lg:text-4xl ${headlineColor}`}>
             {HEADLINE_WORDS.map((word, i) => (
@@ -408,8 +462,23 @@ export default function SampleMealsSection() {
               </div>
             ))}
           </div>
-          <div className="relative h-[400px] w-full overflow-hidden rounded-2xl sm:h-[500px] md:h-[600px] md:w-[380px]">
-            <video autoPlay muted loop playsInline className="h-full w-full object-cover">
+          <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-neutral-900 sm:h-[500px] md:h-[600px] md:w-[380px]">
+            {!videoLoaded && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-neutral-900">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-white/70" />
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35">Loading</span>
+              </div>
+            )}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onLoadedData={() => setVideoLoaded(true)}
+              onCanPlay={() => setVideoLoaded(true)}
+              className={`h-full w-full object-cover transition-opacity duration-700 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
+            >
               <source src="/realmeal/faqs.mp4" type="video/mp4" />
             </video>
           </div>

@@ -71,8 +71,29 @@ export default function Footer() {
   const copyrightHover = "hover:text-white/60";
 
   return (
-    <footer ref={footerRef} className={`px-6 pt-16 sm:px-12 md:px-16 lg:px-20 sm:overflow-hidden border-t ${borderColor} ${footerBg}`}>
-      <div className="mx-auto max-w-7xl">
+    <footer ref={footerRef} className={`relative overflow-hidden px-6 pt-16 sm:px-12 md:px-16 lg:px-20 border-t ${borderColor} ${footerBg}`}>
+      {/* subtle pattern — footer distinct */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 0)",
+            backgroundSize: "32px 32px",
+            maskImage: "radial-gradient(ellipse 80% 68% at 50% 28%, black 30%, transparent 78%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 68% at 50% 28%, black 30%, transparent 78%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-60"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+            maskImage: "radial-gradient(ellipse 76% 62% at 50% 35%, black 22%, transparent 74%)",
+            WebkitMaskImage: "radial-gradient(ellipse 76% 62% at 50% 35%, black 22%, transparent 74%)",
+          }}
+        />
+      </div>
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
           <div className="max-w-xl">
             <h2 className={`text-lg font-medium leading-[1.6] sm:text-xl md:text-2xl lg:text-3xl ${taglineColor}`}>

@@ -103,10 +103,71 @@ function BrandSection() {
   const arrowHoverBg = isDark ? "bg-white/10" : "bg-black/10";
   const arrowHoverBorder = isDark ? "hover:border-white/25" : "hover:border-black/25";
 
-  return (
-    <section ref={sectionRef} className={`relative px-6 py-20 sm:px-12 sm:py-24 md:px-16 md:py-28 lg:px-20 lg:py-32 border-y ${isDark ? "border-[#191919]" : "border-black/10"} ${sectionBg}`}>
+   return (
+    <section ref={sectionRef} className={`relative overflow-hidden px-6 py-20 sm:px-12 sm:py-24 md:px-16 md:py-28 lg:px-20 lg:py-32 ${sectionBg}`}>
+      {/* Fading design pattern — subtle, premium */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        {/* dot grid with soft radial fade */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.09)" : "rgba(120,65,15,0.14)"} 1px, transparent 0)`,
+            backgroundSize: "28px 28px",
+            maskImage: isDark
+              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
+              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
+            WebkitMaskImage: isDark
+              ? "radial-gradient(ellipse 78% 65% at 50% 38%, black 28%, transparent 72%)"
+              : "radial-gradient(ellipse 82% 68% at 50% 38%, black 42%, transparent 76%)",
+          }}
+        />
+        {/* fine hairline grid */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(${isDark ? "rgba(255,255,255,0.025)" : "rgba(120,65,15,0.07)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(255,255,255,0.025)" : "rgba(120,65,15,0.07)"} 1px, transparent 1px)`,
+            backgroundSize: "96px 96px",
+            opacity: isDark ? 0.35 : 1,
+            maskImage: isDark
+              ? "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)"
+              : "radial-gradient(ellipse 88% 72% at 50% 42%, black 35%, transparent 78%)",
+            WebkitMaskImage: isDark
+              ? "radial-gradient(ellipse 85% 70% at 50% 40%, black 20%, transparent 75%)"
+              : "radial-gradient(ellipse 88% 72% at 50% 42%, black 35%, transparent 78%)",
+          }}
+        />
+
+
+        {/* dark-only shape — soft centered pill, not corner glows */}
+        {isDark && (
+          <div
+            className="absolute left-1/2 top-[52%] h-[440px] w-[82%] max-w-[980px] -translate-x-1/2 -translate-y-1/2 rounded-[56px] blur-[42px]"
+            style={{
+              background: "radial-gradient(ellipse 68% 55% at 50% 50%, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.018) 42%, transparent 72%)",
+              border: "1px solid rgba(255,255,255,0.04)",
+            }}
+          />
+        )}
+        {/* depth vignettes */}
+        <div
+          className="absolute inset-x-0 top-0 h-40"
+          style={{
+            background: isDark
+              ? "linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%)"
+              : "linear-gradient(180deg, rgba(120,65,15,0.04) 0%, transparent 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-40"
+          style={{
+            background: isDark
+              ? "linear-gradient(0deg, rgba(0,0,0,0.35) 0%, transparent 100%)"
+              : "linear-gradient(0deg, rgba(120,65,15,0.04) 0%, transparent 100%)",
+          }}
+        />
+      </div>
       <div
-        className="mx-auto max-w-7xl"
+        className="relative z-10 mx-auto max-w-7xl"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(24px)",
@@ -153,7 +214,7 @@ function BrandSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute inset-0 flex flex-col justify-between p-5">
                   <div className="flex justify-end">
-                    <a href="#order" className="rounded-full bg-black/60 px-5 py-1.5 text-xs font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/80">
+                    <a href="#order" className="order-now-btn rounded-full px-5 py-1.5 text-xs font-medium text-white backdrop-blur-sm transition-all duration-300">
                       Order Now
                     </a>
                   </div>

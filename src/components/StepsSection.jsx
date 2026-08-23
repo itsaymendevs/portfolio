@@ -59,8 +59,31 @@ function StepsSection() {
   const descActiveColor = isDark ? "text-white/70" : "text-black/55";
   const descInactiveColor = isDark ? "text-white/40" : "text-black/35";
 
-  return (
+   return (
     <section ref={sectionRef} className={`relative overflow-hidden ${sectionBg}`}>
+      {/* distinct pattern — vertical ticks + offset dots */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        {/* vertical dashed ticks */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `repeating-linear-gradient(90deg, ${isDark ? "rgba(255,255,255,0.055)" : "rgba(120,65,15,0.09)"} 0 1px, transparent 1px 44px)`,
+            maskImage: "radial-gradient(ellipse 78% 62% at 50% 48%, black 28%, transparent 74%)",
+            WebkitMaskImage: "radial-gradient(ellipse 78% 62% at 50% 48%, black 28%, transparent 74%)",
+          }}
+        />
+        {/* staggered dots — offset grid */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${isDark ? "rgba(255,255,255,0.07)" : "rgba(120,65,15,0.11)"} 1.2px, transparent 0)`,
+            backgroundSize: "36px 36px",
+            backgroundPosition: "18px 18px",
+            maskImage: "radial-gradient(ellipse 72% 60% at 50% 45%, black 34%, transparent 76%)",
+            WebkitMaskImage: "radial-gradient(ellipse 72% 60% at 50% 45%, black 34%, transparent 76%)",
+          }}
+        />
+      </div>
       <div className="relative px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
           <span className={`whitespace-nowrap text-[8vw] font-bold uppercase tracking-tight select-none sm:text-[6vw] md:text-[5vw] lg:text-[4vw] ${bgTextColor}`}>

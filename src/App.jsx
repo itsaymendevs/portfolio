@@ -8,6 +8,7 @@ import BrandSection from "./components/BrandSection";
 import SampleMealsSection from "./components/SampleMealsSection";
 import Footer from "./components/Footer";
 import PortfolioPage from "./components/PortfolioPage";
+import Preloader from "./components/Preloader";
 
 function WhatsAppButton() {
   const [show, setShow] = useState(false);
@@ -37,12 +38,15 @@ function WhatsAppButton() {
 }
 
 function RealMealSite() {
+  const [ready, setReady] = useState(false);
+
   useEffect(() => {
     document.title = "Real Meal";
   }, []);
 
   return (
     <div className="min-h-screen">
+      {!ready && <Preloader onDone={() => setReady(true)} />}
       <NavbarA />
       <HeroV2 />
       <MissionSection />
