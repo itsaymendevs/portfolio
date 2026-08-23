@@ -120,7 +120,7 @@ export default function SampleMealsSection() {
           obs.disconnect();
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.22 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -146,7 +146,7 @@ export default function SampleMealsSection() {
           obs.disconnect();
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.22 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -157,7 +157,7 @@ export default function SampleMealsSection() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setVideoVisible(true); obs.disconnect(); } },
-      { threshold: 0.08 }
+      { threshold: 0.22 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -178,7 +178,7 @@ export default function SampleMealsSection() {
           obs.disconnect();
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.22 }
     );
     obs.observe(el);
     return () => obs.disconnect();

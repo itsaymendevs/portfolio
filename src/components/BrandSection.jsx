@@ -38,7 +38,7 @@ function BrandSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.22 }
     );
     observer.observe(el);
     return () => observer.disconnect();

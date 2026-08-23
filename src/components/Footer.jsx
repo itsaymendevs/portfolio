@@ -55,7 +55,7 @@ export default function Footer() {
           obs.disconnect();
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.22 }
     );
     obs.observe(el);
     return () => obs.disconnect();
