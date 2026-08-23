@@ -225,6 +225,58 @@ function MissionSection({ ready = true }) {
           markerEnd="url(#mission-arrow-whole)"
         />
       </svg>
+      {/* mobile — shorter, more visible */}
+      <svg
+        className="pointer-events-none absolute inset-0 block lg:hidden"
+        viewBox="0 0 360 720"
+        fill="none"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        style={{
+          zIndex: 0,
+          opacity: showArrows ? 1 : 0,
+          transform: showArrows ? "translateY(0)" : "translateY(8px)",
+          transition: "opacity 700ms ease, transform 700ms cubic-bezier(0.16,1,0.3,1)",
+        }}
+      >
+        <defs>
+          <marker id="mission-arrow-mobile" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M 0 0 L 7 4 L 0 8 z" fill={isDark ? "rgba(255,255,255,0.20)" : "rgba(0,0,0,0.22)"} />
+          </marker>
+        </defs>
+        <path
+          d="M 42 132 C 72 102, 138 102, 168 132"
+          stroke={isDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.18)"}
+          strokeWidth="1.4"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-mobile)"
+        />
+        <path
+          d="M 268 198 C 294 228, 294 298, 228 328"
+          stroke={isDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.18)"}
+          strokeWidth="1.4"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-mobile)"
+        />
+        <path
+          d="M 168 562 C 138 592, 72 592, 42 562"
+          stroke={isDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.18)"}
+          strokeWidth="1.4"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-mobile)"
+        />
+        <path
+          d="M 58 358 C 32 388, 32 458, 58 488"
+          stroke={isDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.18)"}
+          strokeWidth="1.4"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          markerEnd="url(#mission-arrow-mobile)"
+        />
+      </svg>
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
         <div className="max-w-xl">
           <h2 className={`text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.05] tracking-tight ${titleColor}`}>
