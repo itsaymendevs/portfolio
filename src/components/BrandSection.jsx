@@ -253,7 +253,7 @@ function BrandSection() {
               />
             </div>
           </div>
-          <a href="#consultation" className="subscribe-btn w-full rounded-full px-6 py-2 text-center text-sm font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg sm:w-auto">
+          <a href="#consultation" className="nav-cta-gradient w-full rounded-full px-6 py-2 text-center text-sm font-semibold text-primary-foreground shadow-md transition-all duration-300 hover:shadow-lg sm:w-auto">
             Book consultation
           </a>
         </div>

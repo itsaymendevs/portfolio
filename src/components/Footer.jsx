@@ -61,7 +61,7 @@ export default function Footer() {
     return () => obs.disconnect();
   }, []);
 
-  const footerBg = "bg-[#090909]";
+  const footerBg = "bg-[#111]";
   const taglineColor = "text-white";
   const headingColor = "text-white";
   const linkColor = "text-white/50";

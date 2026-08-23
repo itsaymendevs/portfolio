@@ -237,9 +237,9 @@ export default function SampleMealsSection() {
     : (active ? "#e87c3a" : "rgba(0,0,0,0.3)");
   const faqAnswerColor = isDark ? "text-white/50" : "text-black/55";
   const faqBorderColor = isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.08)";
-  const nextColor = isDark ? "text-white/60" : "text-black/50";
-  const progressBar = isDark ? "bg-white/20" : "bg-black/10";
-  const progressFill = isDark ? "bg-white/70" : "bg-black/60";
+  const nextColor = "text-white/60";
+  const progressBar = "bg-white/20";
+  const progressFill = "bg-white/70";
   const emailBg = isDark ? "bg-white/10" : "bg-black/5";
   const emailBorder = isDark ? "border-white/20" : "border-black/15";
   const emailTextColor = isDark ? "text-white" : "text-black";
@@ -339,7 +339,7 @@ export default function SampleMealsSection() {
             ))}
           </div>
           <div className="mt-8">
-            <a href="#meals" className={`flex items-center gap-4 text-sm font-medium transition-colors ${nextColor} ${isDark ? "hover:text-white" : "hover:text-black"}`}>
+            <a href="#meals" className={`flex items-center gap-4 text-sm font-medium transition-colors ${nextColor} hover:text-white`}>
               <span>view all</span>
               <div className={`h-px w-60 ${progressBar}`} />
             </a>

@@ -214,10 +214,13 @@ html {
 }
 
 .subscribe-btn {
-  background: linear-gradient(135deg, oklch(0.72 0.19 55), oklch(0.65 0.22 40), oklch(0.70 0.18 60));
+  background: linear-gradient(135deg, oklch(0.72 0.19 55), oklch(0.65 0.22 40), oklch(0.70 0.18 60), oklch(0.68 0.20 50), oklch(0.72 0.19 55));
+  background-size: 300% 300%;
+  animation: gradient-shift 4s ease infinite;
 }
 
 .subscribe-btn:hover {
+  animation-play-state: paused;
   box-shadow: 0 4px 24px -2px oklch(0.70 0.20 50 / 0.5);
 }
 

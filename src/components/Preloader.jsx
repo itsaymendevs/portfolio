@@ -66,36 +66,18 @@ export default function Preloader({ onDone }) {
 
       {/* centered content */}
       <div className="relative z-10 flex flex-col items-center">
-        {/* logo — replaces plate */}
-        <div className="relative mb-10 flex h-28 w-28 items-center justify-center">
-          {/* outer thin ring */}
-          <div className="absolute inset-0 rounded-full border border-white/[0.07]" />
-          {/* spinning accent arc */}
-          <div
-            className="absolute inset-0 rounded-full"
+        {/* logo — no circle */}
+        <div className="relative mb-8">
+          <img
+            src="/realmeal/logo.avif"
+            alt="Real Meal"
+            className="h-[90px] w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] sm:h-[102px]"
             style={{
-              background: "conic-gradient(from 0deg, transparent 0deg, transparent 280deg, rgba(255,255,255,0.55) 360deg)",
-              mask: "radial-gradient(circle, transparent 54px, black 55px)",
-              WebkitMask: "radial-gradient(circle, transparent 54px, black 55px)",
-              animation: "spin 1.4s linear infinite",
+              opacity: phase === "enter" ? 0 : 1,
+              transform: phase === "enter" ? "scale(0.94)" : "scale(1)",
+              transition: "opacity 600ms ease 200ms, transform 600ms cubic-bezier(0.16,1,0.3,1) 200ms",
             }}
           />
-          {/* inner logo holder */}
-          <div className="absolute inset-[10px] flex items-center justify-center overflow-hidden rounded-full bg-white/[0.04] backdrop-blur-md border border-white/[0.06] p-3 shadow-[inset_0_1px_rgba(255,255,255,0.06),0_16px_40px_rgba(0,0,0,0.45)]">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
-            <img
-              src="/realmeal/logo.avif"
-              alt="Real Meal"
-              className="relative h-full w-full object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] brightness-0 invert"
-              style={{
-                opacity: phase === "enter" ? 0 : 1,
-                transform: phase === "enter" ? "scale(0.9)" : "scale(1)",
-                transition: "opacity 600ms ease 200ms, transform 600ms cubic-bezier(0.16,1,0.3,1) 200ms",
-              }}
-            />
-          </div>
-          {/* soft glow under */}
-          <div className="absolute -bottom-3 left-1/2 h-3 w-20 -translate-x-1/2 rounded-full bg-white/[0.06] blur-[10px]" />
         </div>
 
         {/* wordmark — staggered reveal */}
