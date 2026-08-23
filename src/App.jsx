@@ -20,7 +20,7 @@ function WhatsAppButton() {
 
   return (
     <a
-      href="https://wa.me/971528301994?text=Hello%20Aymen%21%20I%27m%20reaching%20out%20as%20a%20developer%2Fcompany.%20We%27re%20interested%20in%20building%20a%20website%20for%20our%20company%20or%20hiring%20you%20for%20a%20project.%20Could%20we%20discuss%20details%3F"
+      href="https://wa.me/971528301994?text=Hello%20Aymen%21%20I%27m%20reaching%20out%20as%20a%20company.%20We%27re%20interested%20in%20building%20a%20website%20for%20our%20company%20or%20hiring%20you%20for%20a%20project.%20Could%20we%20discuss%20details%3F"
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-btn fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-700 hover:scale-110"
@@ -45,7 +45,7 @@ function RealMealSite() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div id="top" className="min-h-screen">
       {!ready && <Preloader onDone={() => setReady(true)} />}
       <NavbarA />
       <HeroV2 />

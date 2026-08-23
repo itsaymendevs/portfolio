@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "./ThemeProvider";
 
 const NAVIGATE = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "#top" },
   { label: "About", href: "#about" },
   { label: "Plans", href: "#meal-plans" },
   { label: "Catering", href: "#catering" },

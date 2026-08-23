@@ -2,7 +2,7 @@ import { X, Sun, Moon } from "lucide-react";
 import { useTheme } from "../ThemeProvider";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "#top" },
   { label: "Meal Plans", href: "#meal-plans" },
   { label: "Catering", href: "#catering" },
   { label: "About", href: "#about" },
