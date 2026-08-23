@@ -41,7 +41,21 @@ function RealMealSite() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    document.title = "Real Meal";
+    document.title = "Real Meal — By Aymen";
+    // favicon -> realmeal logo
+    const fav = document.querySelector("link[rel='icon']");
+    if (fav) fav.href = "/realmeal/logo.png";
+    // og tags for sharing (in-app, whatsapp will use static /realmeal/ file)
+    const setOG = (prop, content) => {
+      let el = document.querySelector(`meta[property='${prop}']`);
+      if (!el) { el = document.createElement("meta"); el.setAttribute("property", prop); document.head.appendChild(el); }
+      el.content = content;
+    };
+    setOG("og:title", "Real Meal — By Aymen");
+    setOG("og:description", "Chef-crafted meals, personalized and delivered fresh across the UAE. By Aymen.");
+    setOG("og:image", "https://itsaymendevs.github.io/portfolio/realmeal/og-image.jpg");
+    setOG("og:url", "https://itsaymendevs.github.io/portfolio/realmeal/");
+    setOG("og:type", "website");
   }, []);
 
   return (
