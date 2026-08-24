@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 const FAQS = [
@@ -240,7 +240,7 @@ export default function SampleMealsSection({ ready = true }) {
     ? (active ? "#e87c3a" : "rgba(255,255,255,0.4)")
     : (active ? "#e87c3a" : "rgba(0,0,0,0.3)");
   const faqAnswerColor = isDark ? "text-white/50" : "text-black/55";
-  const faqBorderColor = isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.08)";
+  const faqBorderColor = isDark ? "rgba(77,105,125,0.32)" : "rgba(77,105,125,0.28)";
   const nextColor = "text-white/60";
   const progressBar = "bg-white/20";
   const progressFill = "bg-white/70";
@@ -422,13 +422,18 @@ export default function SampleMealsSection({ ready = true }) {
               <div key={i}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className={`flex w-full items-center gap-5 py-7 text-left transition-colors ${isDark ? "hover:text-white/80" : "hover:text-black/70"}`}
-                  style={{ borderBottom: openFaq === i ? "1px solid transparent" : `1px solid ${faqBorderColor}` }}
+                  className={`flex w-full items-center gap-5 py-8 text-left transition-colors ${isDark ? "hover:text-white/80" : "hover:text-black/70"}`}
+                  style={{ borderBottom: openFaq === i ? "1px solid transparent" : `1px dashed ${faqBorderColor}` }}
                 >
                   <span className="shrink-0 text-lg font-bold transition-colors duration-300" style={{ color: faqNumColor(openFaq === i) }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className={`flex-1 pl-6 text-base font-semibold capitalize ${faqTitleColor}`}>{faq.q}</span>
+                  <span className={`flex-1 pl-6 text-base font-semibold capitalize tracking-[0.02em] ${faqTitleColor}`}>{faq.q}</span>
+                  <Plus
+                    size={18}
+                    strokeWidth={2.2}
+                    className={`shrink-0 transition-all duration-300 ${openFaq === i ? "scale-75 opacity-0" : "scale-100 opacity-100 text-[#e87c3a]"}`}
+                  />
                 </button>
                 <div className="overflow-hidden transition-all duration-300 ease-in-out" style={{ maxHeight: openFaq === i ? "200px" : "0px", opacity: openFaq === i ? 1 : 0 }}>
                   <p className={`pb-6 pt-4 pl-[52px] pr-8 text-sm leading-relaxed ${faqAnswerColor}`}>{faq.a}</p>
@@ -436,7 +441,7 @@ export default function SampleMealsSection({ ready = true }) {
               </div>
             ))}
           </div>
-          <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-neutral-900 sm:h-[500px] md:h-[600px] md:w-[380px]">
+          <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-neutral-900 sm:h-[500px] md:h-[640px] md:w-[460px] lg:w-[500px]">
             {!videoLoaded && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-neutral-900">
                 <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-white/70" />

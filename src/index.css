@@ -347,6 +347,11 @@ html {
   animation: cuisine-glow 3s ease-in-out infinite;
 }
 
+@keyframes faq-light-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(500%); }
+}
+
 /* Card appear one by one */
 .card-appear {
   opacity: 0;
