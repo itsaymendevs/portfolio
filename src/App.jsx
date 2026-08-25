@@ -110,7 +110,7 @@ function FloatingActions() {
   );
 }
 
-function RealMealSite() {
+export function RealMealSite() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {

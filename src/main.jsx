@@ -1,9 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
+import {
+  createRouter,
+  createRootRoute,
+  createRoute,
+  RouterProvider,
+  Outlet,
+  createHashHistory,
+} from '@tanstack/react-router'
 import './index.css'
-import App from './App.jsx'
 import { ThemeProvider } from './components/ThemeProvider.jsx'
+import PortfolioPage from './components/PortfolioPage.jsx'
+import { RealMealSite } from './App.jsx'
+import BeHealthyPage from './components/behealthy/BeHealthyPage.jsx'
 
 // Premium smooth scroll
 function smoothScroll(target, duration = 1200) {
@@ -34,18 +43,49 @@ document.addEventListener('click', (e) => {
   if (!anchor) return;
   const id = anchor.getAttribute('href');
   if (!id || id === '#') return;
+  // let TanStack Router handle route hashes like #/realmeal — only smooth-scroll for in-page anchors
+  if (id.startsWith('#/')) return;
   const el = document.querySelector(id);
   if (!el) return;
   e.preventDefault();
   smoothScroll(el.getBoundingClientRect().top + window.scrollY - 80, 1200);
 });
 
+const rootRoute = createRootRoute({
+  component: () => <Outlet />,
+});
+
+const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/',
+  component: PortfolioPage,
+});
+
+const realmealRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/realmeal',
+  component: RealMealSite,
+});
+
+const behealthyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/behealthy',
+  component: BeHealthyPage,
+});
+
+const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute]);
+
+const hashHistory = createHashHistory();
+
+const router = createRouter({
+  routeTree,
+  history: hashHistory,
+});
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </HashRouter>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>,
 )

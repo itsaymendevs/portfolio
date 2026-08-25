@@ -1,14 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/outfit";
 
+@theme {
+  --font-display: "Instrument Sans", sans-serif;
+  --font-logo: "Bricolage Grotesque", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 html {
   scroll-behavior: auto;
   overscroll-behavior: none;
+}
+
+/* BeHealthy — styled scrollbar — dark thumb, transparent track */
+.behealthy {
+  scrollbar-width: thin;
+  scrollbar-color: #111 transparent;
+}
+.behealthy::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.behealthy::-webkit-scrollbar-track {
+  background: transparent;
+}
+.behealthy::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.behealthy::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  background-clip: content-box;
+}
+.behealthy::-webkit-scrollbar-corner {
+  background: transparent;
+}
+html.behealthy-html {
+  scrollbar-width: thin;
+  scrollbar-color: #111 transparent;
+}
+html.behealthy-html::-webkit-scrollbar {
+  width: 8px;
+}
+html.behealthy-html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html.behealthy-html::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+html.behealthy-html::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  background-clip: content-box;
+}
+html.behealthy-html::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Global fallback — thin */
+* {
+  scrollbar-width: thin;
 }
 
 @theme inline {
