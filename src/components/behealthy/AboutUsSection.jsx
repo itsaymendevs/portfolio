@@ -133,7 +133,7 @@ export default function AboutUsSection() {
                   highlights.includes(part) ? (
                     <span key={j} className="relative inline-block px-0.5">
                       <span className="absolute bottom-[0.12em] left-0 right-0 h-[0.38em] rounded-[2px] bg-[#FFF59D]" aria-hidden="true" />
-                      <span className="relative font-medium text-[#0A2E1F]">{part}</span>
+                      <span className="relative font-medium italic text-[#0A2E1F]">{part}</span>
                     </span>
                   ) : (
                     <span key={j}>{part}</span>
@@ -149,8 +149,19 @@ export default function AboutUsSection() {
             hidden: { opacity: 0, y: 10 },
             visible: { opacity: 1, y: 0, transition: { delay: 0.9, duration: 0.6, staggerChildren: 0.08 } },
           }}
-          className="mt-10 flex flex-wrap justify-between gap-8 border-t border-[#0A2E1F]/10 pt-10 sm:gap-10 lg:flex-nowrap lg:gap-8"
+          className="relative mt-10 flex flex-wrap justify-between gap-8 pt-10 sm:gap-10 lg:flex-nowrap lg:gap-8"
         >
+          <div className="pointer-events-none absolute left-0 right-0 top-0 h-px overflow-hidden" aria-hidden="true">
+            <motion.div
+              className="h-full w-[200%]"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(90deg, rgba(10,46,31,0.18) 0 10px, transparent 10px 20px)",
+              }}
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{ duration: 3.8, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
           {STATS.map((s) => (
             <motion.div
               key={s.label}

@@ -183,24 +183,54 @@ export default function BeHealthyHero() {
         </div>
       </div>
 
-      {/* Center bottom chevron - desktop only */}
+      {/* Center bottom - dashed circle arrow + scroll text */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.4 }}
-        className="pointer-events-none absolute bottom-4 left-1/2 hidden -translate-x-1/2 text-white/35 lg:flex"
+        className="pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-3 lg:flex"
         aria-hidden="true"
       >
-        <motion.svg
-          width="22"
-          height="14"
-          viewBox="0 0 22 14"
-          fill="none"
-          animate={{ y: [0, 4, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <path d="M3 4 L11 11 L19 4" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
-        </motion.svg>
+        <div className="relative grid h-9 w-9 place-items-center">
+          <motion.svg
+            viewBox="0 0 40 40"
+            fill="none"
+            className="absolute inset-0 h-full w-full"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          >
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              stroke="white"
+              strokeOpacity="0.38"
+              strokeWidth="1"
+              strokeDasharray="3 4"
+              strokeLinecap="round"
+            />
+          </motion.svg>
+          <motion.svg
+            width="14"
+            height="10"
+            viewBox="0 0 14 10"
+            fill="none"
+            animate={{ y: [0, 2.5, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <path
+              d="M2 3 L7 8 L12 3"
+              stroke="white"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.9"
+            />
+          </motion.svg>
+        </div>
+        <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
+          Scroll to continue
+        </span>
       </motion.div>
     </section>
   );
