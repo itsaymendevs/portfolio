@@ -36,7 +36,7 @@ export default function BeHealthyHero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-5 inline-flex items-center rounded-full bg-black/20 backdrop-blur-[12px] border border-white/10 px-4 py-2 text-xs font-medium tracking-wide text-white/90 max-h-[700px]:mb-3 max-h-[700px]:px-3 max-h-[700px]:py-1.5 max-h-[700px]:text-[11px]"
+            className="mb-5 inline-flex items-center rounded-full bg-black/20 backdrop-blur-[12px] border border-white/10 px-4 py-2 text-xs font-medium tracking-wide text-white/90 max-h-[700px]:mb-3 max-h-[700px]:px-3 max-h-[700px]:py-1.5 max-h-[700px]:text-[11px] [@media((max-width:1024px)_and_(max-height:770px))]:hidden"
           >
             //Personalized Program | Intelligent Support
           </motion.div>
@@ -58,7 +58,7 @@ export default function BeHealthyHero() {
                   hidden: { y: 28, opacity: 0 },
                   visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
                 }}
-                className="block text-[48px] leading-[0.85] max-h-[700px]:text-[42px] sm:text-[64px] lg:text-[84px] xl:text-[104px]"
+                className="block text-[48px] leading-[0.85] max-h-[700px]:text-[42px] sm:text-[64px] lg:text-[84px] xl:text-[104px] [@media((max-width:1024px)_and_(max-height:770px))]:text-[42px]"
               >
                 {word}
               </motion.span>
@@ -73,12 +73,12 @@ export default function BeHealthyHero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap gap-3"
+          className="flex flex-wrap gap-3 [@media((max-width:1024px)_and_(max-height:770px))]:hidden"
         >
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="relative overflow-hidden rounded-full bg-[#0f6437] px-6 py-3 text-sm font-medium text-white shadow-lg max-h-[700px]:px-4 max-h-[700px]:py-2 max-h-[700px]:text-xs"
+            className="relative overflow-hidden rounded-full bg-[#0f6437] px-6 py-3 text-sm font-medium text-white shadow-lg max-h-[700px]:px-4 max-h-[700px]:py-2 max-h-[700px]:text-xs [@media((max-width:1024px)_and_(max-height:880px))]:px-4 [@media((max-width:1024px)_and_(max-height:880px))]:py-2 [@media((max-width:1024px)_and_(max-height:880px))]:text-xs"
             style={{
               background: "linear-gradient(135deg, #0a4a28 0%, #0f6437 35%, #14914f 65%)",
               backgroundSize: "200% 200%",
@@ -123,7 +123,7 @@ export default function BeHealthyHero() {
 
             <button
               type="button"
-              className="rounded-full border border-white/15 bg-black/20 px-6 py-3 text-sm font-medium text-white backdrop-blur-[12px] hover:bg-black/30 max-h-[700px]:px-4 max-h-[700px]:py-2 max-h-[700px]:text-xs"
+              className="rounded-full border border-white/15 bg-black/20 px-6 py-3 text-sm font-medium text-white backdrop-blur-[12px] hover:bg-black/30 max-h-[700px]:px-4 max-h-[700px]:py-2 max-h-[700px]:text-xs [@media((max-width:1024px)_and_(max-height:880px))]:px-4 [@media((max-width:1024px)_and_(max-height:880px))]:py-2 [@media((max-width:1024px)_and_(max-height:880px))]:text-xs"
             >
               Explore Plans
             </button>

@@ -85,20 +85,32 @@ export default function HowItWorksSection() {
             ))}
           </h2>
           <div
-            className="mx-auto mt-6 max-w-[520px] space-y-1 lg:mx-0"
+            className="mx-auto mt-6 max-w-[520px] lg:mx-0"
             style={{ fontFamily: "var(--font-sans)" }}
           >
-            {DESC_LINES.map((line, i) => (
-              <motion.p
-                key={line}
-                initial={{ opacity: 0, y: 8 }}
-                animate={i < descLines ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:text-[17px]"
-              >
-                {line}
-              </motion.p>
-            ))}
+            {/* <392px: single balanced paragraph to avoid orphan "plan," break */}
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={descLines === DESC_LINES.length ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden max-[392px]:block text-[14.5px] leading-[1.6] tracking-[0.01em] text-black/60 italic [text-wrap:balance]"
+            >
+              {DESC_MOBILE_HOW}
+            </motion.p>
+            {/* >=393px: two-line layout */}
+            <div className="max-[392px]:hidden space-y-1">
+              {DESC_LINES.map((line, i) => (
+                <motion.p
+                  key={line}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={i < descLines ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:text-[17px]"
+                >
+                  {line}
+                </motion.p>
+              ))}
+            </div>
           </div>
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -111,7 +123,7 @@ export default function HowItWorksSection() {
               href="#"
               className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
             >
-              Call For Help? →
+              Call For Help →
             </a>
           </motion.div>
         </div>
@@ -317,7 +329,7 @@ export default function HowItWorksSection() {
           href="#"
           className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
         >
-          Call For Help? →
+          Call For Help →
         </a>
       </motion.div>
     </section>
