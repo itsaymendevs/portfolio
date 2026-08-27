@@ -8,6 +8,8 @@ import MarqueeSection from "./MarqueeSection";
 import MostPopularDishesSection from "./MostPopularDishesSection";
 import MobileAppSection from "./MobileAppSection";
 import HowItWorksSection from "./HowItWorksSection";
+import BranchMenuSection from "./BranchMenuSection";
+import CustomerReviewsSection from "./CustomerReviewsSection";
 
 export default function BeHealthyPage() {
   useEffect(() => {
@@ -49,6 +51,8 @@ export default function BeHealthyPage() {
       <MostPopularDishesSection />
       <MobileAppSection />
       <HowItWorksSection />
+      <BranchMenuSection />
+      <CustomerReviewsSection />
     </div>
   );
 }
