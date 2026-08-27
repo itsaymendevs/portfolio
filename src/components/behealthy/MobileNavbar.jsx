@@ -122,7 +122,7 @@ export default function MobileNavbar() {
                     setOpen(false);
                   }}
                   className={`flex w-full items-center justify-between rounded-full px-5 py-3 text-[15px] font-medium ${
-                    isActive ? "bg-[#F5F2EB] text-[#0A2E1F]" : "text-[#0A2E1F]/60 hover:bg-black/[0.04] hover:text-[#0A2E1F]"
+                    isActive ? "bg-[#F5F2EB] text-black" : "text-black/60 hover:bg-black/[0.04] hover:text-black"
                   }`}
                 >
                   <span>{link.label}</span>

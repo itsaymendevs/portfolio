@@ -49,13 +49,13 @@ export default function MostPopularDishesSection() {
           {/* Left */}
           <div className="w-full max-w-[680px] lg:w-[48%]">
             <h2
-              className="whitespace-normal text-[38px] font-bold leading-[0.95] tracking-[-0.03em] text-[#0A2E1F] sm:text-[46px] md:text-[52px] lg:whitespace-nowrap lg:text-[68px] xl:text-[78px]"
+              className="whitespace-normal text-[38px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[46px] md:text-[52px] lg:whitespace-nowrap lg:text-[68px] xl:text-[78px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {TITLE_WORDS.map((w, i) => (
                 <span
                   key={w}
-                  className="mr-[0.22em] inline-block"
+                  className={`mr-[0.22em] inline-block ${i === 0 ? "max-[410px]:hidden" : ""}`}
                   style={{
                     opacity: i < titleWords ? 1 : 0,
                     transform: i < titleWords ? "translateY(0)" : "translateY(14px)",
@@ -73,7 +73,7 @@ export default function MostPopularDishesSection() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={descLines > 0 ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[16px] leading-[1.7] tracking-[0.01em] text-[#0A2E1F]/60 italic sm:hidden"
+                className="block text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:hidden"
               >
                 {DESC_MOBILE}
               </motion.p>
@@ -85,7 +85,7 @@ export default function MostPopularDishesSection() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={i < descLines ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-[16px] leading-[1.7] tracking-[0.01em] text-[#0A2E1F]/60 italic sm:text-[17px] lg:text-[17px]"
+                    className="text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:text-[17px] lg:text-[17px]"
                   >
                     {line}
                   </motion.p>
@@ -98,10 +98,10 @@ export default function MostPopularDishesSection() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
               className="mt-6 hidden items-center gap-4 lg:flex"
             >
-              <div className="h-px flex-1 bg-[#0A2E1F]/10" />
+              <div className="h-px flex-1 bg-black/10" />
               <a
                 href="#"
-                className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-[#0A2E1F] transition hover:text-[#0f6437]"
+                className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
               >
                 View Menu →
               </a>
@@ -122,7 +122,7 @@ export default function MostPopularDishesSection() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+                className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
                 style={{ transform: "translateY(-8px)" }}
               >
                 <img
@@ -141,7 +141,7 @@ export default function MostPopularDishesSection() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+                className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
                 style={{ transform: "translateY(8px)" }}
               >
                 <img
@@ -172,7 +172,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-3.png"
@@ -190,7 +190,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-4.png"
@@ -208,7 +208,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative grid h-[170px] w-[170px] shrink-0 place-items-center overflow-hidden rounded-full bg-white px-6 text-center sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="relative grid h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 place-items-center overflow-hidden rounded-full bg-white px-6 text-center sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
             <motion.svg
               viewBox="0 0 100 100"
@@ -229,7 +229,7 @@ export default function MostPopularDishesSection() {
                 strokeLinecap="round"
               />
             </motion.svg>
-            <span className="relative z-10 text-[13px] font-semibold uppercase leading-[1.4] tracking-[0.14em] text-[#0A2E1F]">
+            <span className="relative z-10 text-[13px] font-semibold uppercase leading-[1.4] tracking-[0.14em] text-black">
               Guaranteed
               <br />
               Freshness.
@@ -240,7 +240,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.45, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-5.png"
@@ -258,7 +258,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:block sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="hidden group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:block sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-6.png"
@@ -276,7 +276,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.75, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:block sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="hidden group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:block sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-7.png"
@@ -300,7 +300,7 @@ export default function MostPopularDishesSection() {
           className="hidden w-full flex-wrap items-center justify-center gap-2 sm:flex sm:gap-3 lg:gap-4"
         >
           <div
-            className="hidden h-[170px] w-[170px] shrink-0 bg-transparent sm:h-[190px] sm:w-[190px] lg:block lg:h-[210px] lg:w-[210px]"
+            className="hidden h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 bg-transparent sm:h-[190px] sm:w-[190px] lg:block lg:h-[210px] lg:w-[210px]"
             aria-hidden="true"
           />
           <motion.div
@@ -308,7 +308,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-2.png"
@@ -326,7 +326,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.45, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-3.png"
@@ -344,7 +344,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative h-[170px] w-[170px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
                 <img
                   src="/behealthy/images/meal-4.png"
@@ -362,7 +362,7 @@ export default function MostPopularDishesSection() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 1.75, ease: [0.16, 1, 0.3, 1] }}
-            className="relative grid h-[170px] w-[170px] shrink-0 place-items-center overflow-hidden rounded-full bg-white px-6 text-center sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+            className="relative grid h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 place-items-center overflow-hidden rounded-full bg-white px-6 text-center sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
           >
             <motion.svg
               viewBox="0 0 100 100"
@@ -383,14 +383,14 @@ export default function MostPopularDishesSection() {
                 strokeLinecap="round"
               />
             </motion.svg>
-            <span className="relative z-10 text-[13px] font-semibold uppercase leading-[1.4] tracking-[0.14em] text-[#0A2E1F]">
+            <span className="relative z-10 text-[13px] font-semibold uppercase leading-[1.4] tracking-[0.14em] text-black">
               Premium
               <br />
               Quality.
             </span>
           </motion.div>
           <div
-            className="hidden h-[170px] w-[170px] shrink-0 bg-transparent sm:h-[190px] sm:w-[190px] lg:block lg:h-[210px] lg:w-[210px]"
+            className="hidden h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 bg-transparent sm:h-[190px] sm:w-[190px] lg:block lg:h-[210px] lg:w-[210px]"
             aria-hidden="true"
           />
         </motion.div>
@@ -402,10 +402,10 @@ export default function MostPopularDishesSection() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="flex items-center gap-4 lg:hidden"
         >
-          <div className="h-px flex-1 bg-[#0A2E1F]/10" />
+          <div className="h-px flex-1 bg-black/10" />
           <a
             href="#"
-            className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-[#0A2E1F] transition hover:text-[#0f6437]"
+            className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
           >
             View Menu →
           </a>

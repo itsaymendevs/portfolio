@@ -6,6 +6,8 @@ import AboutUsSection from "./AboutUsSection";
 import MealPlansSection from "./MealPlansSection";
 import MarqueeSection from "./MarqueeSection";
 import MostPopularDishesSection from "./MostPopularDishesSection";
+import MobileAppSection from "./MobileAppSection";
+import HowItWorksSection from "./HowItWorksSection";
 
 export default function BeHealthyPage() {
   useEffect(() => {
@@ -45,6 +47,8 @@ export default function BeHealthyPage() {
       <MealPlansSection />
       <MarqueeSection />
       <MostPopularDishesSection />
+      <MobileAppSection />
+      <HowItWorksSection />
     </div>
   );
 }

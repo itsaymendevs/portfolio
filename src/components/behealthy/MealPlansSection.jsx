@@ -956,7 +956,7 @@ export default function MealPlansSection() {
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between relative z-10">
           <div className="w-full max-w-[480px] lg:w-[38%]">
             <motion.div
-              className="relative mb-3 inline-flex items-center overflow-hidden rounded-full border border-black/5 px-3 py-1 text-[11px] font-medium tracking-[0.08em] text-[#0A2E1F]/60"
+              className="relative mb-3 inline-flex items-center overflow-hidden rounded-full border border-black/5 px-3 py-1 text-[11px] font-medium tracking-[0.08em] text-black/60"
               style={{
                 background:
                   "linear-gradient(135deg, #f5f2eb 0%, #ffffff 45%, #ececec 75%, #f0ebe3 100%)",
@@ -984,7 +984,7 @@ export default function MealPlansSection() {
               <span className="relative z-10">//Your Smart Choice</span>
             </motion.div>
             <h2
-              className="whitespace-nowrap text-[42px] font-bold leading-[0.95] tracking-[-0.03em] text-[#0A2E1F] sm:text-[48px] lg:text-[56px] xl:text-[62px]"
+              className="whitespace-nowrap text-[42px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[48px] lg:text-[56px] xl:text-[62px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {TITLE_WORDS.map((w, i) => (
@@ -1004,11 +1004,11 @@ export default function MealPlansSection() {
               ))}
             </h2>
             <p
-              className="mt-6 min-h-[72px] text-[16px] leading-[1.7] tracking-[0.01em] text-[#0A2E1F]/60 sm:min-h-[72px] sm:text-[17px] lg:text-[18px] italic"
+              className="mt-6 min-h-[72px] text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 sm:min-h-[72px] sm:text-[17px] lg:text-[18px] italic"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               {typed}
-              <span className="ml-0.5 inline-block h-[1em] w-px animate-pulse bg-[#0A2E1F]/30 align-middle" />
+              <span className="ml-0.5 inline-block h-[1em] w-px animate-pulse bg-black/30 align-middle" />
             </p>
             <div
               className="hidden w-full items-center gap-4 lg:flex"
@@ -1038,7 +1038,7 @@ export default function MealPlansSection() {
                   <ArrowRight size={16} strokeWidth={1.8} />
                 </button>
               </div>
-              <div className="h-[2px] flex-1 overflow-hidden rounded-full bg-[#0A2E1F]/10">
+              <div className="h-[2px] flex-1 overflow-hidden rounded-full bg-black/10">
                 <div
                   className="h-full rounded-full bg-[#0A2E1F] transition-all duration-500"
                   style={{ width: `${((current + 1) / PLANS.length) * 100}%` }}
@@ -1093,12 +1093,12 @@ export default function MealPlansSection() {
                         {p.label}
                       </div>
                       <div
-                        className="mt-1 text-[18px] font-semibold leading-tight text-[#0A2E1F] sm:text-[19px]"
+                        className="mt-1 text-[18px] font-semibold leading-tight text-black sm:text-[19px]"
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {p.title}
                       </div>
-                      <div className="mt-2 line-clamp-2 text-[14px] leading-[1.6] text-[#0A2E1F]/60">
+                      <div className="mt-2 line-clamp-2 text-[14px] leading-[1.6] text-black/60">
                         {p.desc}
                       </div>
                     </div>
@@ -1141,7 +1141,7 @@ export default function MealPlansSection() {
                 <ArrowRight size={15} strokeWidth={1.8} />
               </button>
             </div>
-            <div className="h-[2px] flex-1 overflow-hidden rounded-full bg-[#0A2E1F]/10">
+            <div className="h-[2px] flex-1 overflow-hidden rounded-full bg-black/10">
               <div
                 className="h-full rounded-full bg-[#0A2E1F] transition-all duration-500"
                 style={{ width: `${((current + 1) / PLANS.length) * 100}%` }}

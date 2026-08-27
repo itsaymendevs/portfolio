@@ -126,14 +126,14 @@ export default function AboutUsSection() {
                   hidden: { y: 16, opacity: 0 },
                   visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
                 }}
-                className="w-full font-medium leading-[1.45] tracking-[0.018em] text-[18px] sm:text-[21px] lg:text-[25px] xl:text-[28px] text-[#0A2E1F]"
+                className="w-full font-medium leading-[1.45] tracking-[0.018em] text-[18px] sm:text-[21px] lg:text-[25px] xl:text-[28px] text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {parts.map((part, j) =>
                   highlights.includes(part) ? (
                     <span key={j} className="relative inline-block px-0.5">
                       <span className="absolute bottom-[0.12em] left-0 right-0 h-[0.38em] rounded-[2px] bg-[#FFF59D]" aria-hidden="true" />
-                      <span className="relative font-medium italic text-[#0A2E1F]">{part}</span>
+                      <span className="relative font-medium italic text-black">{part}</span>
                     </span>
                   ) : (
                     <span key={j}>{part}</span>
@@ -171,10 +171,10 @@ export default function AboutUsSection() {
               }}
               className="min-w-[140px] flex-1 text-left lg:flex-none"
             >
-              <div className="font-display text-[28px] font-bold leading-none tracking-[0.02em] text-[#0A2E1F] sm:text-[32px] lg:text-[36px]" style={{ fontFamily: "var(--font-display)" }}>
+              <div className="font-display text-[28px] font-bold leading-none tracking-[0.02em] text-black sm:text-[32px] lg:text-[36px]" style={{ fontFamily: "var(--font-display)" }}>
                 <Counter value={s.value} suffix={s.suffix} />
               </div>
-              <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.15em] text-[#0A2E1F]/50">{s.label}</div>
+              <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.15em] text-black/50">{s.label}</div>
             </motion.div>
           ))}
         </motion.div>
