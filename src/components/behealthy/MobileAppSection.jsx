@@ -51,20 +51,28 @@ export default function MobileAppSection() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="relative w-[160px] h-[340px] max-[400px]:h-[300px] max-[400px]:w-[140px] sm:w-[190px] sm:h-[400px] lg:w-[260px] lg:h-[540px] rounded-[36px] sm:rounded-[42px] lg:rounded-[48px] bg-[#0a0a0a] p-[8px] sm:p-[10px] shadow-[0_20px_60px_rgba(0,0,0,0.28)]">
-              <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[36px] bg-white p-4">
+            <div className="relative w-[160px] h-[340px] max-[400px]:h-[300px] max-[400px]:w-[140px] sm:w-[190px] sm:h-[400px] lg:w-[260px] lg:h-[540px] rounded-[28px] sm:rounded-[32px] lg:rounded-[36px] bg-[#151515] p-[6px] sm:p-[7px] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-[#2a2a2a]/50">
+              <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[22px] sm:rounded-[26px] lg:rounded-[28px] bg-white p-4">
                 <img
                   src="/behealthy/images/logo.png"
                   alt="BeHealthy logo"
                   className="h-auto max-h-[110px] w-full max-w-[150px] object-contain"
                 />
-                <div className="absolute left-1/2 top-3 h-[18px] w-[70px] -translate-x-1/2 rounded-full bg-black" aria-hidden="true" />
-                <div className="pointer-events-none absolute inset-0 rounded-[48px] ring-1 ring-black/5" aria-hidden="true" />
+                {/* Galaxy S26 Ultra punch-hole camera */}
+                <div className="absolute left-1/2 top-[9px] h-[10px] w-[10px] -translate-x-1/2 rounded-full bg-[#0a0a0a] border border-[#1e1e1e] shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_2px_rgba(0,0,0,0.5)]" aria-hidden="true">
+                  <div className="absolute inset-[2px] rounded-full bg-[#1a1a1a] shadow-[inset_0_0.5px_1px_rgba(255,255,255,0.15)]" />
+                </div>
+                <div className="pointer-events-none absolute inset-0 rounded-[22px] sm:rounded-[26px] lg:rounded-[28px] ring-1 ring-black/5" aria-hidden="true" />
               </div>
-              <div className="absolute -left-[2px] top-[70px] h-6 w-[3px] rounded-r-full bg-[#2a2a2a]" aria-hidden="true" />
-              <div className="absolute -left-[2px] top-[98px] h-10 w-[3px] rounded-r-full bg-[#2a2a2a]" aria-hidden="true" />
-              <div className="absolute -left-[2px] top-[116px] h-10 w-[3px] rounded-r-full bg-[#2a2a2a]" aria-hidden="true" />
-              <div className="absolute -right-[2px] top-[90px] h-12 w-[3px] rounded-l-full bg-[#2a2a2a]" aria-hidden="true" />
+              {/* Galaxy S26 Ultra — flat titanium frame, buttons on right, S Pen slot bottom */}
+              <div className="absolute -right-[1.5px] top-[68px] h-[28px] w-[2.5px] rounded-l-[2px] bg-[#2e2e2e] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.08)]" aria-hidden="true" />
+              <div className="absolute -right-[1.5px] top-[104px] h-[42px] w-[2.5px] rounded-l-[2px] bg-[#2e2e2e] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.08)]" aria-hidden="true" />
+              <div className="absolute -right-[1.5px] top-[152px] h-[42px] w-[2.5px] rounded-l-[2px] bg-[#2e2e2e] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.08)]" aria-hidden="true" />
+              <div className="absolute bottom-[4px] left-1/2 flex -translate-x-1/2 items-center gap-1.5" aria-hidden="true">
+                <div className="h-[2px] w-6 rounded-full bg-[#1e1e1e] opacity-70" />
+                <div className="h-[3px] w-1 rounded-full bg-[#0f0f0f] border border-white/5" />
+                <div className="h-[2px] w-4 rounded-full bg-[#1e1e1e] opacity-70" />
+              </div>
             </div>
           </motion.div>
 
@@ -76,20 +84,28 @@ export default function MobileAppSection() {
             transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="relative w-[160px] h-[340px] max-[400px]:h-[300px] max-[400px]:w-[140px] sm:w-[190px] sm:h-[400px] lg:w-[260px] lg:h-[540px] rounded-[36px] sm:rounded-[42px] lg:rounded-[48px] bg-[#0a0a0a] p-[8px] sm:p-[10px] shadow-[0_20px_60px_rgba(0,0,0,0.28)]">
-              <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[36px] bg-white p-4">
+            <div className="relative w-[160px] h-[340px] max-[400px]:h-[300px] max-[400px]:w-[140px] sm:w-[190px] sm:h-[400px] lg:w-[260px] lg:h-[540px] rounded-[28px] sm:rounded-[32px] lg:rounded-[36px] bg-[#151515] p-[6px] sm:p-[7px] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-[#2a2a2a]/50">
+              <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[22px] sm:rounded-[26px] lg:rounded-[28px] bg-white p-4">
                 <img
                   src="/behealthy/images/logo.png"
                   alt="BeHealthy logo"
                   className="h-auto max-h-[110px] w-full max-w-[150px] object-contain"
                 />
-                <div className="absolute left-1/2 top-3 h-[18px] w-[70px] -translate-x-1/2 rounded-full bg-black" aria-hidden="true" />
-                <div className="pointer-events-none absolute inset-0 rounded-[48px] ring-1 ring-black/5" aria-hidden="true" />
+                {/* Galaxy S26 Ultra punch-hole camera */}
+                <div className="absolute left-1/2 top-[9px] h-[10px] w-[10px] -translate-x-1/2 rounded-full bg-[#0a0a0a] border border-[#1e1e1e] shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_2px_rgba(0,0,0,0.5)]" aria-hidden="true">
+                  <div className="absolute inset-[2px] rounded-full bg-[#1a1a1a] shadow-[inset_0_0.5px_1px_rgba(255,255,255,0.15)]" />
+                </div>
+                <div className="pointer-events-none absolute inset-0 rounded-[22px] sm:rounded-[26px] lg:rounded-[28px] ring-1 ring-black/5" aria-hidden="true" />
               </div>
-              <div className="absolute -left-[2px] top-[70px] h-6 w-[3px] rounded-r-full bg-[#2a2a2a]" aria-hidden="true" />
-              <div className="absolute -left-[2px] top-[98px] h-10 w-[3px] rounded-r-full bg-[#2a2a2a]" aria-hidden="true" />
-              <div className="absolute -left-[2px] top-[116px] h-10 w-[3px] rounded-r-full bg-[#2a2a2a]" aria-hidden="true" />
-              <div className="absolute -right-[2px] top-[90px] h-12 w-[3px] rounded-l-full bg-[#2a2a2a]" aria-hidden="true" />
+              {/* Galaxy S26 Ultra — flat titanium frame, buttons on right, S Pen slot bottom */}
+              <div className="absolute -right-[1.5px] top-[68px] h-[28px] w-[2.5px] rounded-l-[2px] bg-[#2e2e2e] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.08)]" aria-hidden="true" />
+              <div className="absolute -right-[1.5px] top-[104px] h-[42px] w-[2.5px] rounded-l-[2px] bg-[#2e2e2e] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.08)]" aria-hidden="true" />
+              <div className="absolute -right-[1.5px] top-[152px] h-[42px] w-[2.5px] rounded-l-[2px] bg-[#2e2e2e] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.08)]" aria-hidden="true" />
+              <div className="absolute bottom-[4px] left-1/2 flex -translate-x-1/2 items-center gap-1.5" aria-hidden="true">
+                <div className="h-[2px] w-6 rounded-full bg-[#1e1e1e] opacity-70" />
+                <div className="h-[3px] w-1 rounded-full bg-[#0f0f0f] border border-white/5" />
+                <div className="h-[2px] w-4 rounded-full bg-[#1e1e1e] opacity-70" />
+              </div>
             </div>
           </motion.div>
         </div>

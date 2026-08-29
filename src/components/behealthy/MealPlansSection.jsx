@@ -1064,7 +1064,7 @@ export default function MealPlansSection() {
                 return (
                   <div
                     key={`${p.id}-${idx}`}
-                    className="group flex h-[380px] w-[85vw] max-w-[320px] shrink-0 flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] sm:h-[420px] sm:w-[310px] lg:h-[440px] lg:w-[330px]"
+                    className="group flex h-[380px] w-[75vw] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.06)] sm:shadow-[0_8px_24px_rgba(0,0,0,0.06)] sm:h-[420px] sm:w-[310px] lg:h-[440px] lg:w-[330px]"
                     style={{
                       opacity:
                         idx % PLANS.length < cardsVisible
@@ -1103,7 +1103,7 @@ export default function MealPlansSection() {
                         {p.desc}
                       </div>
                     </div>
-                    <div className="flex h-[52%] w-full shrink-0 items-center justify-center bg-white p-3">
+                    <div className="flex h-[52%] w-full shrink-0 items-center justify-center bg-white p-[10px] sm:p-3">
                       <img
                         src={p.img}
                         alt={p.title}

@@ -14,6 +14,9 @@ import HowItWorksSection from "./HowItWorksSection";
 import BranchMenuSection from "./BranchMenuSection";
 import CustomerReviewsSection from "./CustomerReviewsSection";
 import OurBranchesSection from "./OurBranchesSection";
+import PartnersMarqueeSection from "./PartnersMarqueeSection";
+// import FreeConsultationSection from "./FreeConsultationSection"; // removed — will redesign
+import FloatingActions from "./FloatingActions";
 
 export default function BeHealthyPage() {
   useEffect(() => {
@@ -89,6 +92,9 @@ export default function BeHealthyPage() {
       <BranchMenuSection />
       <CustomerReviewsSection />
       <OurBranchesSection />
+      <PartnersMarqueeSection />
+      {/* <FreeConsultationSection /> — removed, will redesign */}
+      <FloatingActions />
     </div>
   );
 }

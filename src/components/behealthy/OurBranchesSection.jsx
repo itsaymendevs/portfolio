@@ -195,7 +195,7 @@ export default function OurBranchesSection() {
             className="relative grid h-[120px] place-items-center overflow-hidden rounded-[16px] bg-white p-2 text-center sm:h-[140px] lg:h-[160px] xl:h-[180px]"
           >
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
-              <motion.rect x="1" y="1" width="98" height="98" rx="16" ry="16" fill="none" stroke="rgba(0,0,0,0.09)" strokeWidth="0.9" strokeDasharray="6 6" strokeLinecap="round" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -24 }} transition={{ duration: 1.6, repeat: Infinity, ease: "linear" }} />
+              <motion.rect x="1" y="1" width="98" height="98" rx="16" ry="16" fill="none" stroke="rgba(15,100,55,0.28)" strokeWidth="0.9" strokeDasharray="6 6" strokeLinecap="round" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -24 }} transition={{ duration: 1.6, repeat: Infinity, ease: "linear" }} />
             </svg>
             <span className="relative px-1 text-[10px] font-semibold uppercase leading-[1.3] tracking-[0.08em] text-black/70 sm:text-[11px]">
               {BRANCH_INFOS[branchIndex % BRANCH_INFOS.length].name}
