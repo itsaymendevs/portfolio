@@ -40,6 +40,7 @@ export default function MostPopularDishesSection() {
 
   return (
     <section
+      id="popular"
       ref={sectionRef}
       className="relative flex min-h-[46vh] items-center justify-center overflow-hidden bg-white px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
     >
@@ -141,7 +142,7 @@ export default function MostPopularDishesSection() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
+                className="group relative hidden h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 cursor-pointer overflow-hidden rounded-[18px] bg-transparent sm:flex sm:h-[190px] sm:w-[190px] lg:h-[210px] lg:w-[210px]"
                 style={{ transform: "translateY(8px)" }}
               >
                 <img
@@ -154,6 +155,40 @@ export default function MostPopularDishesSection() {
                     High Protein
                   </span>
                 </div>
+              </motion.div>
+              {/* Mobile only — circle Premium Quality replacing second image */}
+              <motion.div
+                initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                className="relative grid h-[170px] w-[170px] max-[396px]:h-[150px] max-[396px]:w-[150px] shrink-0 place-items-center overflow-hidden rounded-full bg-white px-6 text-center sm:hidden"
+                style={{ transform: "translateY(8px)" }}
+              >
+                <motion.svg
+                  viewBox="0 0 100 100"
+                  className="pointer-events-none absolute inset-0 h-full w-full"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="48.5"
+                    fill="none"
+                    stroke="#0f6437"
+                    strokeOpacity="0.32"
+                    strokeWidth="1.2"
+                    strokeDasharray="6 6"
+                    strokeLinecap="round"
+                  />
+                </motion.svg>
+                <span className="relative z-10 text-[13px] font-semibold uppercase leading-[1.4] tracking-[0.14em] text-black">
+                  Premium
+                  <br />
+                  Quality.
+                </span>
               </motion.div>
             </motion.div>
           </div>

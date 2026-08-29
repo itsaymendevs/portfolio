@@ -16,7 +16,7 @@ export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="absolute inset-x-0 top-0 z-30 lg:hidden">
+    <nav className="fixed inset-x-0 top-0 z-30 lg:hidden">
       <div className="flex w-full justify-between items-center px-4 pt-4">
         <a href="#">
           <span

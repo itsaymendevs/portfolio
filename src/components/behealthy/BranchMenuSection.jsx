@@ -9,9 +9,9 @@ const MEAL_IMAGES = [
   "/behealthy/images/meal-5.png",
   "/behealthy/images/meal-6.png",
   "/behealthy/images/meal-7.png",
-  "/behealthy/images/meal-8.png",
-  "/behealthy/images/meal-plan-1.png",
-  "/behealthy/images/meal-plan-2.png",
+  "/behealthy/images/meal-9.png",
+  "/behealthy/images/meal-10.png",
+  "/behealthy/images/meal-11.png",
 ];
 
 const WORDS = [

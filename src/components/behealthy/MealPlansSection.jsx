@@ -178,6 +178,7 @@ export default function MealPlansSection() {
 
   return (
     <section
+      id="plans"
       ref={sectionRef}
       className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-[#f8f8f8] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
     >

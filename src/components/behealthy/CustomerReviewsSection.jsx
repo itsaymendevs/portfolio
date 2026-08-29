@@ -14,7 +14,7 @@ const REVIEWS = [
   {
     id: 2,
     text: "The variety is incredible and every dish feels chef-crafted. I’ve stayed consistent for months without getting bored — that’s the real win.",
-    name: "Omar Khaled",
+    name: "Amira Al Fahim",
     job: "Creative Director",
     avatar: "/behealthy/images/reviewer-2.jpg",
     rating: 5,
@@ -62,11 +62,11 @@ export default function CustomerReviewsSection() {
       <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
         {/* Left — big inverted quotes + review */}
         <div className="relative w-full flex-1 lg:max-w-[58%]">
-          {/* Big double quotes — inverted / top-left */}
+          {/* Big double quotes — inverted / top-left — appears after comment */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="pointer-events-none absolute -top-8 left-0 hidden select-none font-serif text-[148px] leading-none tracking-[-0.08em] text-black/[0.07] sm:block sm:text-[180px] lg:-top-12 lg:text-[220px]"
             aria-hidden="true"
           >
@@ -76,7 +76,7 @@ export default function CustomerReviewsSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
             className="pointer-events-none absolute -top-2 left-0 select-none font-serif text-[96px] leading-none text-black/[0.07] sm:hidden"
             aria-hidden="true"
           >
@@ -87,36 +87,61 @@ export default function CustomerReviewsSection() {
             <motion.p
               key={review.id}
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-[760px] font-serif text-[20px] font-medium leading-[1.4] tracking-[-0.015em] text-black sm:text-[23px] lg:text-[28px]"
+              animate={visible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-[760px] font-serif text-[18px] font-medium leading-[1.4] tracking-[-0.015em] text-black sm:text-[23px] lg:text-[28px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {review.text}
             </motion.p>
 
-            <div className="mt-8 flex items-end justify-between gap-4">
-              {/* Left — next reviewer preview (rectangle slide + text aligned to image end) */}
+            <div className="mt-8 flex items-center justify-between gap-4">
+              {/* Left — next reviewer preview + Right — next button — appears last */}
               <motion.div
                 key={`next-${review.id}`}
                 initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col gap-2"
+                animate={visible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: 1.25, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-end gap-3 sm:gap-4"
               >
                 {(() => {
                   const next = REVIEWS[(index + 1) % REVIEWS.length];
                   return (
                     <>
-                      <div className="h-[56px] w-[88px] shrink-0 overflow-hidden rounded-[10px] bg-black/5 sm:h-[64px] sm:w-[104px] lg:h-[72px] lg:w-[120px]">
-                        <img src={next.avatar} alt={next.name} className="h-full w-full object-cover" />
-                      </div>
-                      <div className="w-[88px] text-left sm:w-[104px] lg:w-[120px]" style={{ fontFamily: "var(--font-sans)" }}>
-                        <div className="truncate text-[12px] font-semibold leading-none tracking-[-0.01em] text-black sm:text-[13px]">
+                      <div className="hidden pb-1 text-right sm:order-1 sm:block" style={{ fontFamily: "var(--font-sans)" }}>
+                        <div className="text-[13px] font-semibold leading-none tracking-[-0.01em] text-black">
                           {next.name}
                         </div>
-                        <div className="mt-1 truncate text-[10px] font-medium leading-none tracking-[0.03em] text-black/45 sm:text-[11px]">
+                        <div className="mt-1 text-[11px] font-medium leading-none tracking-[0.03em] text-black/45">
                           {next.job}
+                        </div>
+                      </div>
+                      <div className="relative order-1 h-[72px] w-[120px] shrink-0 sm:order-2 sm:h-[88px] sm:w-[152px] lg:h-[96px] lg:w-[168px]">
+                        <svg
+                          viewBox="0 0 168 96"
+                          preserveAspectRatio="none"
+                          className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+                          aria-hidden="true"
+                        >
+                          <motion.rect
+                            x="1"
+                            y="1"
+                            width="166"
+                            height="94"
+                            rx="12"
+                            ry="12"
+                            fill="none"
+                            stroke="rgba(0,0,0,0.09)"
+                            strokeWidth="1"
+                            strokeDasharray="6 6"
+                            strokeLinecap="round"
+                            initial={{ strokeDashoffset: 0 }}
+                            animate={{ strokeDashoffset: -24 }}
+                            transition={{ duration: 1.4, repeat: Infinity, ease: "linear" }}
+                          />
+                        </svg>
+                        <div className="absolute inset-[4px] overflow-hidden rounded-[10px] bg-black/5">
+                          <img src={next.avatar} alt={next.name} className="h-full w-full object-cover" />
                         </div>
                       </div>
                     </>
@@ -128,25 +153,28 @@ export default function CustomerReviewsSection() {
                 type="button"
                 onClick={() => setIndex((i) => (i + 1) % REVIEWS.length)}
                 initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                animate={visible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 1.35, ease: [0.16, 1, 0.3, 1] }}
                 className="group flex shrink-0 items-center gap-3"
                 aria-label="Next review"
               >
                 <span className="h-px w-28 bg-black/15 transition-[width] duration-300 group-hover:w-36 sm:w-36 sm:group-hover:w-44" />
-                <span className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]">
+                <span className="hidden whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437] min-[405px]:inline">
                   Next Review →
+                </span>
+                <span className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437] min-[405px]:hidden">
+                  Next →
                 </span>
               </motion.button>
             </div>
           </div>
         </div>
 
-        {/* Right — user image + name/job below */}
+        {/* Right — user image + name/job below — appears after commas */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 10 }}
           animate={visible ? { opacity: 1, scale: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="relative flex shrink-0 flex-col items-center"
         >
           <div className="relative h-[300px] w-[240px] sm:h-[380px] sm:w-[300px] lg:h-[440px] lg:w-[340px]">
@@ -190,7 +218,7 @@ export default function CustomerReviewsSection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 6 }}
               animate={visible ? { opacity: 1, scale: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
               className="absolute bottom-4 left-3 flex items-center gap-2 rounded-full border border-white/15 bg-black/25 px-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-[12px] sm:bottom-5 sm:left-4"
             >
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/90 text-[11px] font-bold text-black">✓</span>
@@ -201,8 +229,8 @@ export default function CustomerReviewsSection() {
           <motion.div
             key={review.id}
             initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            animate={visible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
             className="mt-4 flex w-full max-w-[340px] items-center justify-between gap-4 px-1"
             style={{ fontFamily: "var(--font-sans)" }}
           >

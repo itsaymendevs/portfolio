@@ -76,6 +76,7 @@ export default function HowItWorksSection() {
 
   return (
     <section
+      id="how-it-works"
       ref={sectionRef}
       className="relative z-0 flex min-h-[46vh] flex-col items-center justify-center overflow-hidden bg-white px-6 py-16 pt-32 sm:px-10 sm:py-20 lg:px-16 lg:py-24 lg:pt-40"
     >

@@ -19,8 +19,14 @@ export default function BeHealthyHero() {
     }
   };
 
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    else if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-black">
+    <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-black">
       <img
         src="/behealthy/images/hero.jpeg"
         alt="Be Healthy hero"
@@ -123,6 +129,7 @@ export default function BeHealthyHero() {
 
             <button
               type="button"
+              onClick={() => scrollToId("plans")}
               className="rounded-full border border-white/15 bg-black/20 px-6 py-3 text-sm font-medium text-white backdrop-blur-[12px] hover:bg-black/30 max-h-[700px]:px-4 max-h-[700px]:py-2 max-h-[700px]:text-xs [@media((max-width:1024px)_and_(max-height:880px))]:px-4 [@media((max-width:1024px)_and_(max-height:880px))]:py-2 [@media((max-width:1024px)_and_(max-height:880px))]:text-xs"
             >
               Explore Plans
@@ -183,13 +190,15 @@ export default function BeHealthyHero() {
         </div>
       </div>
 
-      {/* Center bottom - dashed circle arrow + scroll text */}
-      <motion.div
+      {/* Center bottom - dashed circle arrow + scroll text — scrolls to About */}
+      <motion.button
+        type="button"
+        onClick={() => scrollToId("about")}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.4 }}
-        className="pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-3 lg:flex"
-        aria-hidden="true"
+        className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 cursor-pointer items-center gap-3 lg:flex"
+        aria-label="Scroll to About Us"
       >
         <div className="relative grid h-9 w-9 place-items-center">
           <motion.svg
@@ -231,7 +240,7 @@ export default function BeHealthyHero() {
         <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
           Scroll to continue
         </span>
-      </motion.div>
+      </motion.button>
     </section>
   );
 }
