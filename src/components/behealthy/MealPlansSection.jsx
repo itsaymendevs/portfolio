@@ -1048,10 +1048,10 @@ export default function MealPlansSection() {
             </div>
           </div>
 
-          <div className="w-full overflow-hidden lg:w-[692px] lg:shrink-0 p-2 -m-2">
+          <div className="w-full overflow-hidden lg:w-[692px] lg:shrink-0 p-2 -m-2 pr-2 sm:pr-0 lg:p-4 lg:-m-4 lg:pr-0">
             <div
               ref={trackRef}
-              className="flex w-max gap-5 sm:gap-8 pb-2"
+              className="flex w-max gap-5 sm:gap-8 pb-2 pr-6 sm:pr-0 lg:pb-6"
               style={{
                 transition: "transform 600ms cubic-bezier(0.25,1,0.5,1)",
                 willChange: "transform",
@@ -1103,11 +1103,11 @@ export default function MealPlansSection() {
                         {p.desc}
                       </div>
                     </div>
-                    <div className="flex h-[52%] w-full shrink-0 items-center justify-center bg-white p-[10px] sm:p-3">
+                    <div className="flex h-[52%] w-full shrink-0 items-center justify-center bg-white p-3">
                       <img
                         src={p.img}
                         alt={p.title}
-                        className="h-full w-full object-contain"
+                        className="h-[85%] w-[85%] object-contain sm:h-full sm:w-full"
                       />
                     </div>
                   </div>
