@@ -25,6 +25,45 @@ export default function BeHealthyPage() {
   const [preloading, setPreloading] = useState(true);
 
   useEffect(() => {
+    const prevTitle = document.title;
+    const prevDesc = document.querySelector('meta[name="description"]')?.content || "";
+    document.title = "BeHealthy — Fresh Meal Plans & Daily Delivery Across UAE | Dubai, Abu Dhabi, Sharjah";
+    const upsert = (attr, name, content) => {
+      let el = document.querySelector(`meta[${attr}="${name}"]`);
+      const created = !el;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+      return { el, created };
+    };
+    const mDesc = upsert("name", "description", "BeHealthy crafts personalized meal plans — balanced, high-protein, plant-based — with fresh daily delivery across Dubai, Abu Dhabi & Sharjah. Chef-crafted, dietitian-approved, flexible subscriptions.");
+    const mOgTitle = upsert("property", "og:title", "BeHealthy — Personalized Meal Plans in UAE");
+    const mOgDesc = upsert("property", "og:description", "Fresh, chef-crafted meal plans tailored to your taste, body and lifestyle. Balanced nutrition, flexible delivery, 5+ branches across UAE.");
+    const mOgImg = upsert("property", "og:image", "/behealthy/images/hero.png");
+    const mOgUrl = upsert("property", "og:url", window.location.href);
+    const mTwCard = upsert("name", "twitter:card", "summary_large_image");
+    let fav = document.querySelector("link[rel='icon']");
+    const prevFav = fav?.href || "";
+    if (fav) fav.href = "/behealthy/images/logo.png";
+
+    return () => {
+      document.title = prevTitle;
+      const d = document.querySelector('meta[name="description"]');
+      if (d) d.content = prevDesc;
+      if (mDesc.created) mDesc.el.remove();
+      if (mOgTitle.created) mOgTitle.el.remove();
+      if (mOgDesc.created) mOgDesc.el.remove();
+      if (mOgImg.created) mOgImg.el.remove();
+      if (mOgUrl.created) mOgUrl.el.remove();
+      if (mTwCard.created) mTwCard.el.remove();
+      if (fav) fav.href = prevFav;
+    };
+  }, []);
+
+  useEffect(() => {
     document.documentElement.classList.add("behealthy-html");
     document.body.classList.add("behealthy");
 
