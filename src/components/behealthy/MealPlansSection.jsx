@@ -10,8 +10,6 @@ import {
 } from "lucide-react";
 
 const TITLE_WORDS = ["Our", "Meal", "Plans."];
-const DESC =
-  "— Choose from balanced, high-protein, or plant-based plans, crafted around your taste, schedule, and goals. Enjoy chef-crafted meals, flexible deliveries, easy swaps, and expert guidance to stay nourished and energized.";
 
 const PLANS = [
   {
@@ -48,11 +46,13 @@ const PLANS = [
   },
 ];
 
+const DESC =
+  "— Choose from balanced, high-protein, or plant-based plans, crafted around your taste, schedule, and goals. Enjoy chef-crafted meals, flexible deliveries, easy swaps, and expert guidance to stay nourished and energized.";
+
 export default function MealPlansSection() {
   const [cardVisible, setCardVisible] = useState(false);
   const [titleWords, setTitleWords] = useState(0);
   const [captionVisible, setCaptionVisible] = useState(false);
-  const [typed, setTyped] = useState("");
   const [cardsVisible, setCardsVisible] = useState(0);
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -73,14 +73,7 @@ export default function MealPlansSection() {
           setTimeout(() => setCaptionVisible(true), 180);
           const afterTitle = 180 + TITLE_WORDS.length * 90 + 160;
           setTimeout(() => setButtonsVisible(true), afterTitle - 60);
-          setTimeout(() => {
-            let i = 0;
-            const iv = setInterval(() => {
-              i++;
-              setTyped(DESC.slice(0, i));
-              if (i >= DESC.length) clearInterval(iv);
-            }, 12);
-          }, afterTitle);
+          // description appears after scroll — no typewriting
           setTimeout(() => {
             PLANS.forEach((_, idx) =>
               setTimeout(
@@ -1004,13 +997,15 @@ export default function MealPlansSection() {
                 </span>
               ))}
             </h2>
-            <p
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={cardVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 min-h-[72px] text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 sm:min-h-[72px] sm:text-[17px] lg:text-[18px] italic"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              {typed}
-              <span className="ml-0.5 inline-block h-[1em] w-px animate-pulse bg-black/30 align-middle" />
-            </p>
+              {DESC}
+            </motion.p>
             <div
               className="hidden w-full items-center gap-4 lg:flex"
               style={{

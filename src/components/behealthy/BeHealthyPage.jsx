@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -17,9 +17,13 @@ import OurBranchesSection from "./OurBranchesSection";
 import PartnersMarqueeSection from "./PartnersMarqueeSection";
 // import FreeConsultationSection from "./FreeConsultationSection"; // removed — will redesign
 import NewsletterFullBgSection from "./NewsletterFullBgSection";
+import BeHealthyFooter from "./BeHealthyFooter";
+import BeHealthyPreloader from "./BeHealthyPreloader";
 import FloatingActions from "./FloatingActions";
 
 export default function BeHealthyPage() {
+  const [preloading, setPreloading] = useState(true);
+
   useEffect(() => {
     document.documentElement.classList.add("behealthy-html");
     document.body.classList.add("behealthy");
@@ -82,6 +86,7 @@ export default function BeHealthyPage() {
 
   return (
     <div className="behealthy min-h-screen bg-white">
+      {preloading && <BeHealthyPreloader onDone={() => setPreloading(false)} />}
       <Navbar />
       <BeHealthyHero />
       <AboutUsSection />
@@ -95,6 +100,7 @@ export default function BeHealthyPage() {
       <OurBranchesSection />
       <PartnersMarqueeSection />
       <NewsletterFullBgSection />
+      <BeHealthyFooter />
       {/* <FreeConsultationSection /> — removed, will redesign */}
       <FloatingActions />
     </div>
