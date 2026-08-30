@@ -26,9 +26,12 @@ export default function BeHealthyHero() {
   };
 
   return (
-    <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-black">
+    <section
+      id="top"
+      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-black"
+    >
       <img
-        src="/behealthy/images/hero.png"
+        src="/behealthy/images/hero.jpg"
         alt="Be Healthy hero"
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -54,7 +57,9 @@ export default function BeHealthyHero() {
             animate="visible"
             variants={{
               hidden: {},
-              visible: { transition: { staggerChildren: 0.12, delayChildren: 0.45 } },
+              visible: {
+                transition: { staggerChildren: 0.12, delayChildren: 0.45 },
+              },
             }}
           >
             {["THRIVE", "NOURISH", "BALANCE"].map((word) => (
@@ -62,7 +67,11 @@ export default function BeHealthyHero() {
                 key={word}
                 variants={{
                   hidden: { y: 28, opacity: 0 },
-                  visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+                  },
                 }}
                 className="block text-[48px] leading-[0.85] max-h-[700px]:text-[42px] sm:text-[64px] lg:text-[84px] xl:text-[104px] [@media((max-width:1024px)_and_(max-height:770px))]:text-[42px]"
               >
@@ -86,7 +95,8 @@ export default function BeHealthyHero() {
             whileTap={{ scale: 0.98 }}
             className="relative overflow-hidden rounded-full bg-[#0f6437] px-6 py-3 text-sm font-medium text-white shadow-lg max-h-[700px]:px-4 max-h-[700px]:py-2 max-h-[700px]:text-xs [@media((max-width:1024px)_and_(max-height:880px))]:px-4 [@media((max-width:1024px)_and_(max-height:880px))]:py-2 [@media((max-width:1024px)_and_(max-height:880px))]:text-xs"
             style={{
-              background: "linear-gradient(135deg, #0a4a28 0%, #0f6437 35%, #14914f 65%)",
+              background:
+                "linear-gradient(135deg, #0a4a28 0%, #0f6437 35%, #14914f 65%)",
               backgroundSize: "200% 200%",
             }}
           >
@@ -94,7 +104,12 @@ export default function BeHealthyHero() {
               className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
               initial={{ x: "-100%" }}
               animate={{ x: "200%" }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 2.5, ease: "easeInOut" }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatDelay: 2.5,
+                ease: "easeInOut",
+              }}
               style={{ transform: "skewX(-12deg)" }}
             />
             <span className="relative z-10">
@@ -145,44 +160,51 @@ export default function BeHealthyHero() {
             transition={{ duration: 0.6, delay: 1, ease: [0.16, 1, 0.3, 1] }}
             className="rounded-[22px] border border-white/15 bg-black/20 p-2.5 backdrop-blur-[16px]"
           >
-          <div className="relative h-[148px] w-[210px] overflow-hidden rounded-[14px] bg-black lg:h-[220px] lg:w-[360px]">
-            {isVideoLoading && (
-              <div className="absolute inset-0 grid place-items-center bg-black/40">
-                <Loader2 className="h-6 w-6 animate-spin text-white/70" />
-              </div>
-            )}
-            <video
-              ref={videoRef}
-              src="/behealthy/videos/hero-pip.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              onLoadStart={() => setIsVideoLoading(true)}
-              onCanPlay={() => setIsVideoLoading(false)}
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="flex items-center justify-between px-1 pt-2.5">
-            <div className="text-xs leading-tight text-white/85">
-              <div className="font-medium">Inside Be Healthy</div>
-              <div className="text-white/60">Fresh kitchen • 01:20</div>
+            <div className="relative h-[148px] w-[210px] overflow-hidden rounded-[14px] bg-black lg:h-[220px] lg:w-[360px]">
+              {isVideoLoading && (
+                <div className="absolute inset-0 grid place-items-center bg-black/40">
+                  <Loader2 className="h-6 w-6 animate-spin text-white/70" />
+                </div>
+              )}
+              <video
+                ref={videoRef}
+                src="/behealthy/videos/hero-pip.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                onLoadStart={() => setIsVideoLoading(true)}
+                onCanPlay={() => setIsVideoLoading(false)}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                className="h-full w-full object-cover"
+              />
             </div>
-            <button
-              type="button"
-              onClick={togglePlay}
-              className="grid h-8 w-8 place-items-center rounded-full bg-black text-white hover:bg-black/80"
-              aria-label={isPlaying ? "Pause video" : "Play video"}
-            >
-              {isPlaying ? <Square size={12} fill="white" /> : <Play size={12} fill="white" className="ml-0.5" />}
-            </button>
-          </div>
-        </motion.div>
+            <div className="flex items-center justify-between px-1 pt-2.5">
+              <div className="text-xs leading-tight text-white/85">
+                <div className="font-medium">Inside Be Healthy</div>
+                <div className="text-white/60">Fresh kitchen • 01:20</div>
+              </div>
+              <button
+                type="button"
+                onClick={togglePlay}
+                className="grid h-8 w-8 place-items-center rounded-full bg-black text-white hover:bg-black/80"
+                aria-label={isPlaying ? "Pause video" : "Play video"}
+              >
+                {isPlaying ? (
+                  <Square size={12} fill="white" />
+                ) : (
+                  <Play size={12} fill="white" className="ml-0.5" />
+                )}
+              </button>
+            </div>
+          </motion.div>
           <div className="flex flex-col items-center gap-2 pb-2 lg:hidden">
-            <span className="text-[10px] font-medium tracking-[0.2em] text-white/60" style={{ writingMode: "vertical-rl" }}>
+            <span
+              className="text-[10px] font-medium tracking-[0.2em] text-white/60"
+              style={{ writingMode: "vertical-rl" }}
+            >
               scroll down
             </span>
             <div className="h-10 w-px bg-white/30" />

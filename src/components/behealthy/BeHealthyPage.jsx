@@ -26,8 +26,10 @@ export default function BeHealthyPage() {
 
   useEffect(() => {
     const prevTitle = document.title;
-    const prevDesc = document.querySelector('meta[name="description"]')?.content || "";
-    document.title = "BeHealthy — Fresh Meal Plans & Daily Delivery Across UAE | Dubai, Abu Dhabi, Sharjah";
+    const prevDesc =
+      document.querySelector('meta[name="description"]')?.content || "";
+    document.title =
+      "BeHealthy — Fresh Meal Plans & Daily Delivery Across UAE | Dubai, Abu Dhabi, Sharjah";
     const upsert = (attr, name, content) => {
       let el = document.querySelector(`meta[${attr}="${name}"]`);
       const created = !el;
@@ -39,10 +41,22 @@ export default function BeHealthyPage() {
       el.setAttribute("content", content);
       return { el, created };
     };
-    const mDesc = upsert("name", "description", "BeHealthy crafts personalized meal plans — balanced, high-protein, plant-based — with fresh daily delivery across Dubai, Abu Dhabi & Sharjah. Chef-crafted, dietitian-approved, flexible subscriptions.");
-    const mOgTitle = upsert("property", "og:title", "BeHealthy — Personalized Meal Plans in UAE");
-    const mOgDesc = upsert("property", "og:description", "Fresh, chef-crafted meal plans tailored to your taste, body and lifestyle. Balanced nutrition, flexible delivery, 5+ branches across UAE.");
-    const mOgImg = upsert("property", "og:image", "/behealthy/images/hero.png");
+    const mDesc = upsert(
+      "name",
+      "description",
+      "BeHealthy crafts personalized meal plans — balanced, high-protein, plant-based — with fresh daily delivery across Dubai, Abu Dhabi & Sharjah. Chef-crafted, dietitian-approved, flexible subscriptions.",
+    );
+    const mOgTitle = upsert(
+      "property",
+      "og:title",
+      "BeHealthy — Personalized Meal Plans in UAE",
+    );
+    const mOgDesc = upsert(
+      "property",
+      "og:description",
+      "Fresh, chef-crafted meal plans tailored to your taste, body and lifestyle. Balanced nutrition, flexible delivery, 5+ branches across UAE.",
+    );
+    const mOgImg = upsert("property", "og:image", "/behealthy/images/hero.jpg");
     const mOgUrl = upsert("property", "og:url", window.location.href);
     const mTwCard = upsert("name", "twitter:card", "summary_large_image");
     let fav = document.querySelector("link[rel='icon']");

@@ -32,7 +32,7 @@ export default function BeHealthyPreloader({ onDone }) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.98 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#faf8f5] px-6"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-white px-6"
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.04]"
