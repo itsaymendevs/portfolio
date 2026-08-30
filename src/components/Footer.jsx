@@ -62,7 +62,7 @@ export default function Footer({ ready = true }) {
     return () => obs.disconnect();
   }, [ready]);
 
-  const footerBg = "bg-[#111]";
+  const footerBg = "bg-black";
   const taglineColor = "text-white";
   const headingColor = "text-white";
   const linkColor = "text-white/50";
@@ -73,8 +73,13 @@ export default function Footer({ ready = true }) {
 
   return (
     <footer ref={footerRef} id="contact" className={`relative overflow-hidden px-6 pt-16 sm:px-12 md:px-16 lg:px-20 border-t ${borderColor} ${footerBg}`}>
-      {/* subtle pattern — footer */}
+      {/* footer.jpeg background */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <img src="/behealthy/images/footer.jpeg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-black/55" />
+      </div>
+      {/* subtle pattern — footer */}
+      <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden="true">
         <div
           className="absolute inset-0"
           style={{

@@ -28,7 +28,7 @@ export default function BeHealthyHero() {
   return (
     <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-black">
       <img
-        src="/behealthy/images/hero.jpeg"
+        src="/behealthy/images/hero.png"
         alt="Be Healthy hero"
         className="absolute inset-0 h-full w-full object-cover"
       />

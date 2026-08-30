@@ -16,6 +16,7 @@ import CustomerReviewsSection from "./CustomerReviewsSection";
 import OurBranchesSection from "./OurBranchesSection";
 import PartnersMarqueeSection from "./PartnersMarqueeSection";
 // import FreeConsultationSection from "./FreeConsultationSection"; // removed — will redesign
+import NewsletterFullBgSection from "./NewsletterFullBgSection";
 import FloatingActions from "./FloatingActions";
 
 export default function BeHealthyPage() {
@@ -93,6 +94,7 @@ export default function BeHealthyPage() {
       <CustomerReviewsSection />
       <OurBranchesSection />
       <PartnersMarqueeSection />
+      <NewsletterFullBgSection />
       {/* <FreeConsultationSection /> — removed, will redesign */}
       <FloatingActions />
     </div>
