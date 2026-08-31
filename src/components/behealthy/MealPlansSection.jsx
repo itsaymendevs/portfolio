@@ -128,25 +128,7 @@ export default function MealPlansSection() {
       ref={sectionRef}
       className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-[#f8f8f8] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
     >
-      {/* Visible pattern — lines a bit more visible */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.11]"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.22) 1.4px, transparent 0)",
-          backgroundSize: "22px 22px",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.09]"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(15,100,55,0.34) 1.6px, transparent 0)",
-          backgroundSize: "26px 26px",
-          backgroundPosition: "13px 13px",
-        }}
-        aria-hidden="true"
-      />
-      {/* Rectangle lines pattern — more visible */}
+      {/* Rectangle lines pattern — dots removed */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.11]"
         style={{
