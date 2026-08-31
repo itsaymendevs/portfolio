@@ -132,14 +132,14 @@ export default function BeHealthyFooter() {
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
-              className="text-center text-[11px] tracking-[0.04em] text-white/40 transition hover:text-white/70 sm:text-center"
+              className="pointer-events-none text-center text-[11px] tracking-[0.04em] text-white/40 transition hover:text-white/70 sm:text-center"
             >
               Privacy Policy
             </a>
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
-              className="text-right text-[11px] tracking-[0.04em] text-white/40 transition hover:text-white/70 sm:text-right"
+              className="pointer-events-none text-right text-[11px] tracking-[0.04em] text-white/40 transition hover:text-white/70 sm:text-right"
             >
               Terms and Conditions
             </a>

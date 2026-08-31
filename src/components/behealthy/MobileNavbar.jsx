@@ -18,7 +18,7 @@ export default function MobileNavbar() {
   return (
     <nav className="fixed inset-x-0 top-0 z-30 lg:hidden">
       <div className="flex w-full justify-between items-center px-4 pt-4">
-        <a href="#">
+        <a href="#" className="pointer-events-none">
           <span
             style={{ fontFamily: "var(--font-logo)" }}
             className="text-[22px] font-semibold tracking-[-0.03em] flex gap-[6px] text-white"

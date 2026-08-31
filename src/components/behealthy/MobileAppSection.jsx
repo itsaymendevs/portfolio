@@ -170,8 +170,7 @@ export default function MobileAppSection() {
             className="mt-8 flex flex-wrap gap-3"
           >
             <a
-              href="#"
-              className="block transition hover:opacity-90 hover:scale-[1.02]"
+              href="#" className="pointer-events-none block transition hover:opacity-90 hover:scale-[1.02]"
               aria-label="Download on the App Store"
             >
               <img
@@ -181,8 +180,7 @@ export default function MobileAppSection() {
               />
             </a>
             <a
-              href="#"
-              className="block transition hover:opacity-90 hover:scale-[1.02]"
+              href="#" className="pointer-events-none block transition hover:opacity-90 hover:scale-[1.02]"
               aria-label="Get it on Google Play"
             >
               <img

@@ -101,8 +101,7 @@ export default function MostPopularDishesSection() {
             >
               <div className="h-px flex-1 bg-black/10" />
               <a
-                href="#"
-                className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
+                href="#" className="pointer-events-none whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
               >
                 View Menu →
               </a>
@@ -439,8 +438,7 @@ export default function MostPopularDishesSection() {
         >
           <div className="h-px flex-1 bg-black/10" />
           <a
-            href="#"
-            className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
+            href="#" className="pointer-events-none whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-black transition hover:text-[#0f6437]"
           >
             View Menu →
           </a>
