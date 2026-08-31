@@ -200,7 +200,12 @@ export default function BeHealthyHero() {
               </button>
             </div>
           </motion.div>
-          <div className="flex flex-col items-center gap-2 pb-2 lg:hidden">
+           <button
+            type="button"
+            onClick={() => scrollToId("about")}
+            className="flex flex-col items-center gap-2 pb-2 lg:hidden"
+            aria-label="Scroll to About Us"
+          >
             <span
               className="text-[10px] font-medium tracking-[0.2em] text-white/60"
               style={{ writingMode: "vertical-rl" }}
@@ -208,7 +213,7 @@ export default function BeHealthyHero() {
               scroll down
             </span>
             <div className="h-10 w-px bg-white/30" />
-          </div>
+          </button>
         </div>
       </div>
 
