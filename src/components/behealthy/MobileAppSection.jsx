@@ -54,7 +54,7 @@ export default function MobileAppSection() {
             <div className="relative w-[160px] h-[340px] max-[400px]:h-[300px] max-[400px]:w-[140px] sm:w-[190px] sm:h-[400px] lg:w-[260px] lg:h-[540px] rounded-[28px] sm:rounded-[32px] lg:rounded-[36px] bg-[#151515] p-[6px] sm:p-[7px] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-[#2a2a2a]/50">
               <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[22px] sm:rounded-[26px] lg:rounded-[28px] bg-white p-4">
                 <img
-                  src="/behealthy/images/logo.png"
+                  src="/behealthy/images/logo-black.png"
                   alt="BeHealthy logo"
                   className="h-auto max-h-[110px] w-full max-w-[150px] object-contain"
                 />
@@ -87,7 +87,7 @@ export default function MobileAppSection() {
             <div className="relative w-[160px] h-[340px] max-[400px]:h-[300px] max-[400px]:w-[140px] sm:w-[190px] sm:h-[400px] lg:w-[260px] lg:h-[540px] rounded-[28px] sm:rounded-[32px] lg:rounded-[36px] bg-[#151515] p-[6px] sm:p-[7px] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-[#2a2a2a]/50">
               <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[22px] sm:rounded-[26px] lg:rounded-[28px] bg-white p-4">
                 <img
-                  src="/behealthy/images/logo.png"
+                  src="/behealthy/images/logo-black.png"
                   alt="BeHealthy logo"
                   className="h-auto max-h-[110px] w-full max-w-[150px] object-contain"
                 />
