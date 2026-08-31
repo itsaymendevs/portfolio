@@ -23,6 +23,7 @@ import FloatingActions from "./FloatingActions";
 
 export default function BeHealthyPage() {
   const [preloading, setPreloading] = useState(true);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const prevTitle = document.title;
@@ -78,6 +79,7 @@ export default function BeHealthyPage() {
   }, []);
 
   useEffect(() => {
+    if (!ready) return;
     document.documentElement.classList.add("behealthy-html");
     document.body.classList.add("behealthy");
 
@@ -135,27 +137,37 @@ export default function BeHealthyPage() {
       document.documentElement.classList.remove("behealthy-html");
       document.body.classList.remove("behealthy");
     };
-  }, []);
+  }, [ready]);
+
+  useEffect(() => {
+    if (!preloading) {
+      const t = setTimeout(() => setReady(true), 80);
+      return () => clearTimeout(t);
+    }
+  }, [preloading]);
 
   return (
     <div className="behealthy min-h-screen bg-white">
       {preloading && <BeHealthyPreloader onDone={() => setPreloading(false)} />}
-      <Navbar />
-      <BeHealthyHero />
-      <AboutUsSection />
-      <MealPlansSection />
-      <MarqueeSection />
-      <MostPopularDishesSection />
-      <MobileAppSection />
-      <HowItWorksSection />
-      <BranchMenuSection />
-      <CustomerReviewsSection />
-      <OurBranchesSection />
-      <PartnersMarqueeSection />
-      <NewsletterFullBgSection />
-      <BeHealthyFooter />
-      {/* <FreeConsultationSection /> — removed, will redesign */}
-      <FloatingActions />
+      {ready && (
+        <>
+          <Navbar />
+          <BeHealthyHero />
+          <AboutUsSection />
+          <MealPlansSection />
+          <MarqueeSection />
+          <MostPopularDishesSection />
+          <MobileAppSection />
+          <HowItWorksSection />
+          <BranchMenuSection />
+          <CustomerReviewsSection />
+          <OurBranchesSection />
+          <PartnersMarqueeSection />
+          <NewsletterFullBgSection />
+          <BeHealthyFooter />
+          <FloatingActions />
+        </>
+      )}
     </div>
   );
 }

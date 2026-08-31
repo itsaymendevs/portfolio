@@ -8,7 +8,7 @@ export default function BeHealthyPreloader({ onDone }) {
   useEffect(() => {
     let raf;
     let start = performance.now();
-    const duration = 1600;
+    const duration = 1100;
     const tick = (now) => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
@@ -17,8 +17,8 @@ export default function BeHealthyPreloader({ onDone }) {
       else {
         setTimeout(() => {
           setExit(true);
-          setTimeout(() => onDone?.(), 650);
-        }, 300);
+          setTimeout(() => onDone?.(), 400);
+        }, 150);
       }
     };
     raf = requestAnimationFrame(tick);
@@ -52,19 +52,11 @@ export default function BeHealthyPreloader({ onDone }) {
             <motion.img
               src="/behealthy/images/logo-black.png"
               alt="BeHealthy"
-              className="h-10 w-auto object-contain sm:h-12"
+              className="h-12 w-auto object-contain sm:h-14"
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             />
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.35, duration: 0.4 }}
-              className="mt-3 text-[11px] font-medium tracking-[0.18em] text-black/40"
-            >
-              Fresh · Crafted · Delivered
-            </motion.p>
 
             <div className="relative mt-8 h-px w-[220px] overflow-hidden rounded-full bg-black/10">
               <motion.div
@@ -77,19 +69,7 @@ export default function BeHealthyPreloader({ onDone }) {
                 }}
               />
             </div>
-            <span className="mt-3 font-mono text-[10px] tracking-widest text-black/25">
-              {String(Math.round(progress)).padStart(2, "0")}%
-            </span>
           </motion.div>
-
-          <motion.p
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-[10px] uppercase tracking-[0.18em] text-black/20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.4 }}
-          >
-            UAE · Dubai & Abu Dhabi
-          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>
