@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Mail, Phone, ArrowRight } from "lucide-react";
+import { attachVisitorIdentity, logVisit } from "@/lib/visitors";
 
 export default function FreeConsultationSection() {
   const [visible, setVisible] = useState(false);
@@ -28,6 +29,8 @@ export default function FreeConsultationSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email.trim() || !phone.trim()) return;
+    attachVisitorIdentity({ email: email.trim(), phone: phone.trim() });
+    logVisit({ email: email.trim(), phone: phone.trim() });
     setSent(true);
     setTimeout(() => setSent(false), 2800);
     setEmail("");

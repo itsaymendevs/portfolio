@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { attachVisitorIdentity, logVisit } from "@/lib/visitors";
 
 const TITLE_WORDS = ["Stay", "Connected"];
 
@@ -28,6 +29,8 @@ export default function StayConnectedSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email.trim()) return;
+    attachVisitorIdentity({ email: email.trim() });
+    logVisit({ email: email.trim() });
     setSent(true);
     setTimeout(() => setSent(false), 2500);
     setEmail("");

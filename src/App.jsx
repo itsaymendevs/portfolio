@@ -9,6 +9,7 @@ import SampleMealsSection from "./components/SampleMealsSection";
 import Footer from "./components/Footer";
 import PortfolioPage from "./components/PortfolioPage";
 import Preloader from "./components/Preloader";
+import VisitorsPage from "./components/VisitorsPage";
 
 function FloatingActions() {
   const [show, setShow] = useState(false);
@@ -151,6 +152,7 @@ function App() {
     <Routes>
       <Route path="/" element={<PortfolioPage />} />
       <Route path="/realmeal" element={<RealMealSite />} />
+      <Route path="/visitors" element={<VisitorsPage />} />
     </Routes>
   );
 }

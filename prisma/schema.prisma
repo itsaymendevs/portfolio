@@ -1,0 +1,83 @@
+// Prisma schema for Visitor tracking — Supabase Postgres
+// Supabase project: mlncmwgoljergzncycsa (https://mlncmwgoljergzncycsa.supabase.co)
+// Uses connection pooling (PgBouncer) via DATABASE_URL, direct connection via DIRECT_URL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Visitor {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  visitorId      String?  @map("visitor_id")
+  sessionId      String?  @map("session_id")
+
+  // timing + routing
+  timestamp      DateTime @default(now())
+  timestampMs    BigInt?  @map("timestamp_ms")
+  route          String   @default("/")
+  hash           String?
+  href           String?  @db.Text
+  pathname       String?
+  referrer       String?  @db.Text
+
+  // identity (only if user submitted a form)
+  email          String?
+  name           String?
+  phone          String?
+
+  // i18n / tz
+  language       String?
+  languages      String?
+  timezone       String?
+  timezoneOffset Int?     @map("timezone_offset")
+
+  // device
+  device         String?
+  browser        String?
+  os             String?
+  platform       String?
+  vendor         String?
+  userAgent      String?  @map("user_agent") @db.Text
+
+  // screen / hardware
+  screen         String?
+  viewport       String?
+  pixelRatio     Float?   @map("pixel_ratio")
+  touch          Boolean?
+  cores          Int?
+  memory         Float?
+  cookieEnabled  Boolean? @map("cookie_enabled")
+  online         Boolean?
+  doNotTrack     String?  @map("do_not_track")
+
+  // connection (stored as JSON if available)
+  connection     Json?
+
+  // geo / ip (enriched async)
+  ip             String?
+  city           String?
+  region         String?
+  regionCode     String?  @map("region_code")
+  country        String?
+  countryCode    String?  @map("country_code")
+  postal         String?
+  org            String?
+  asn            String?
+  latitude       Float?
+  longitude      Float?
+  currency       String?
+
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@index([route])
+  @@index([ip])
+  @@index([countryCode])
+  @@index([timestamp])
+  @@index([email])
+  @@map("visitors")
+}

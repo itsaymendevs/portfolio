@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 externals/
+.env
+.prisma
+server/.env
 
 # Editor directories and files
 .vscode/*

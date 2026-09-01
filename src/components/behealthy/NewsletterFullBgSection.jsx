@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { attachVisitorIdentity, logVisit } from "@/lib/visitors";
 
 const TITLE = ["Enjoy", "[ Fresh", "Meals", "]", "Every", "Single", "Day"];
 // 6 words core: Enjoy Fresh Meals Every Single Day with brackets around Fresh Meals
@@ -29,6 +30,9 @@ export default function NewsletterFullBgSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email.trim()) return;
+    attachVisitorIdentity({ email: email.trim() });
+    // also log enriched visit so visitors table shows email immediately
+    logVisit({ email: email.trim() });
     setSent(true);
     setTimeout(() => setSent(false), 2500);
     setEmail("");

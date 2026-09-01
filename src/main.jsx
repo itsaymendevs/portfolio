@@ -13,6 +13,8 @@ import { ThemeProvider } from './components/ThemeProvider.jsx'
 import PortfolioPage from './components/PortfolioPage.jsx'
 import { RealMealSite } from './App.jsx'
 import BeHealthyPage from './components/behealthy/BeHealthyPage.jsx'
+import VisitorsPage from './components/VisitorsPage.jsx'
+import useVisitorTracker from './hooks/useVisitorTracker.js'
 
 // Premium smooth scroll
 function smoothScroll(target, duration = 1200) {
@@ -51,8 +53,13 @@ document.addEventListener('click', (e) => {
   smoothScroll(el.getBoundingClientRect().top + window.scrollY - 80, 1200);
 });
 
+function RootWithTracker() {
+  useVisitorTracker();
+  return <Outlet />;
+}
+
 const rootRoute = createRootRoute({
-  component: () => <Outlet />,
+  component: RootWithTracker,
 });
 
 const indexRoute = createRoute({
@@ -73,7 +80,13 @@ const behealthyRoute = createRoute({
   component: BeHealthyPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute]);
+const visitorsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/visitors',
+  component: VisitorsPage,
+});
+
+const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute, visitorsRoute]);
 
 const hashHistory = createHashHistory();
 
