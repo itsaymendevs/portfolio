@@ -21,7 +21,7 @@ export default function NewsletterFullBgSection() {
           obs.disconnect();
         }
       },
-      { threshold: 0.22 }
+      { threshold: 0.22 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -39,10 +39,7 @@ export default function NewsletterFullBgSection() {
   };
 
   return (
-    <section
-      ref={ref}
-      className="relative w-full overflow-hidden"
-    >
+    <section ref={ref} className="relative w-full overflow-hidden">
       <div className="absolute inset-0">
         <img
           src="/behealthy/images/footer.png"
@@ -58,7 +55,17 @@ export default function NewsletterFullBgSection() {
           className="max-w-[720px] text-[22px] font-bold capitalize leading-[0.9] tracking-[-0.02em] text-white sm:text-[26px] lg:text-[34px] xl:text-[38px]"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          {["Get", "free", "consultation,", "offers", "and", "much", "more", "by", "subscribing."].map((w, i) => {
+          {[
+            "Get",
+            "free",
+            "consultation,",
+            "offers",
+            "and",
+            "much",
+            "more",
+            "by",
+            "subscribing.",
+          ].map((w, i) => {
             const isHighlight = w.startsWith("subscribing");
             return (
               <span

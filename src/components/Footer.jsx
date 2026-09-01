@@ -62,7 +62,7 @@ export default function Footer({ ready = true }) {
     return () => obs.disconnect();
   }, [ready]);
 
-  const footerBg = "bg-black";
+  const footerBg = "bg-[#0a0a0a]";
   const taglineColor = "text-white";
   const headingColor = "text-white";
   const linkColor = "text-white/50";
@@ -73,32 +73,6 @@ export default function Footer({ ready = true }) {
 
   return (
     <footer ref={footerRef} id="contact" className={`relative overflow-hidden px-6 pt-16 sm:px-12 md:px-16 lg:px-20 border-t ${borderColor} ${footerBg}`}>
-      {/* footer.jpeg background */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <img src="/behealthy/images/footer.jpeg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-black/55" />
-      </div>
-      {/* subtle pattern — footer */}
-      <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden="true">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 0)",
-            backgroundSize: "32px 32px",
-            maskImage: "radial-gradient(ellipse 80% 68% at 50% 28%, black 30%, transparent 78%)",
-            WebkitMaskImage: "radial-gradient(ellipse 80% 68% at 50% 28%, black 30%, transparent 78%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-            maskImage: "radial-gradient(ellipse 76% 62% at 50% 35%, black 22%, transparent 74%)",
-            WebkitMaskImage: "radial-gradient(ellipse 76% 62% at 50% 35%, black 22%, transparent 74%)",
-          }}
-        />
-      </div>
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
           <div className="max-w-xl">
