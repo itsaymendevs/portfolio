@@ -25,7 +25,9 @@ const IP_CACHE_TTL = 1000 * 60 * 60 * 6; // 6h
 // Backend endpoints:
 // - Primary: VITE_VISITOR_ENDPOINT (e.g. /api/visitors -> Prisma Express server)
 // - Fallback: direct Supabase insert via supabase-js (requires VITE_SUPABASE_URL + ANON_KEY)
-const VISITOR_ENDPOINT = import.meta.env?.VITE_VISITOR_ENDPOINT || "/api/visitors";
+// For GitHub Pages (static, no server) set VITE_VISITOR_ENDPOINT="" to skip API and use direct Supabase
+const _envEndpoint = import.meta.env?.VITE_VISITOR_ENDPOINT;
+const VISITOR_ENDPOINT = _envEndpoint !== undefined ? _envEndpoint : "/api/visitors";
 
 // ---------------------------------------------------------------------------
 

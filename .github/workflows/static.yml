@@ -27,6 +27,15 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Inject env from Secrets (optional, overrides .env.production)
+        # If you set GitHub Secrets VITE_SUPABASE_URL etc., they will override .env.production
+        # Otherwise .env.production (publishable key, safe to commit) is used and build works out-of-the-box
+        # We write to .env.production.local which has highest priority in Vite
+        run: |
+          if [ -n "${{ secrets.VITE_SUPABASE_URL }}" ]; then echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" >> .env.production.local; echo "Injected VITE_SUPABASE_URL from Secrets"; fi
+          if [ -n "${{ secrets.VITE_SUPABASE_ANON_KEY }}" ]; then echo "VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}" >> .env.production.local; echo "Injected VITE_SUPABASE_ANON_KEY from Secrets"; fi
+          if [ -n "${{ secrets.VITE_VISITOR_ENDPOINT }}" ]; then echo "VITE_VISITOR_ENDPOINT=${{ secrets.VITE_VISITOR_ENDPOINT }}" >> .env.production.local; echo "Injected VITE_VISITOR_ENDPOINT from Secrets"; fi
+          echo "--- .env.production ---"; cat .env.production; if [ -f .env.production.local ]; then echo "--- .env.production.local (Secrets) ---"; cat .env.production.local; fi
       - name: Build
         run: npm run build
       - name: Setup Pages
