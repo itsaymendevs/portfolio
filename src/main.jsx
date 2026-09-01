@@ -80,13 +80,19 @@ const behealthyRoute = createRoute({
   component: BeHealthyPage,
 });
 
+const behealtyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/behealty',
+  component: BeHealthyPage,
+});
+
 const visitorsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/visitors',
   component: VisitorsPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute, visitorsRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute, behealtyRoute, visitorsRoute]);
 
 const hashHistory = createHashHistory();
 
