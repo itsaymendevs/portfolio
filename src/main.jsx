@@ -13,6 +13,7 @@ import { ThemeProvider } from './components/ThemeProvider.jsx'
 import PortfolioPage from './components/PortfolioPage.jsx'
 import { RealMealSite } from './App.jsx'
 import BeHealthyPage from './components/behealthy/BeHealthyPage.jsx'
+import TravellersPage from './components/travellers/TravellersPage.jsx'
 import VisitorsPage from './components/VisitorsPage.jsx'
 import useVisitorTracker from './hooks/useVisitorTracker.js'
 
@@ -92,7 +93,19 @@ const visitorsRoute = createRoute({
   component: VisitorsPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute, behealtyRoute, visitorsRoute]);
+const travellersRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/travellers',
+  component: TravellersPage,
+});
+
+const travellersTypoRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/traverllers',
+  component: TravellersPage,
+});
+
+const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute, behealtyRoute, visitorsRoute, travellersRoute, travellersTypoRoute]);
 
 const hashHistory = createHashHistory();
 
