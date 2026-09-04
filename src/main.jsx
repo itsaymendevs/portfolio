@@ -1,5 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import {
   createRouter,
   createRootRoute,
@@ -7,15 +7,15 @@ import {
   RouterProvider,
   Outlet,
   createHashHistory,
-} from '@tanstack/react-router'
-import './index.css'
-import { ThemeProvider } from './components/ThemeProvider.jsx'
-import PortfolioPage from './components/PortfolioPage.jsx'
-import { RealMealSite } from './App.jsx'
-import BeHealthyPage from './components/behealthy/BeHealthyPage.jsx'
-import TravellersPage from './components/travellers/TravellersPage.jsx'
-import VisitorsPage from './components/VisitorsPage.jsx'
-import useVisitorTracker from './hooks/useVisitorTracker.js'
+} from "@tanstack/react-router";
+import "./index.css";
+import { ThemeProvider } from "./components/ThemeProvider.jsx";
+import PortfolioPage from "./components/PortfolioPage.jsx";
+import { RealMealSite } from "./App.jsx";
+import BeHealthyPage from "./components/behealthy/BeHealthyPage.jsx";
+import TravellersPage from "./components/travellers/TravellersPage.jsx";
+import VisitorsPage from "./components/VisitorsPage.jsx";
+import useVisitorTracker from "./hooks/useVisitorTracker.js";
 
 // Premium smooth scroll
 function smoothScroll(target, duration = 1200) {
@@ -41,13 +41,13 @@ function smoothScroll(target, duration = 1200) {
   requestAnimationFrame(step);
 }
 
-document.addEventListener('click', (e) => {
+document.addEventListener("click", (e) => {
   const anchor = e.target.closest('a[href^="#"]');
   if (!anchor) return;
-  const id = anchor.getAttribute('href');
-  if (!id || id === '#') return;
+  const id = anchor.getAttribute("href");
+  if (!id || id === "#") return;
   // let TanStack Router handle route hashes like #/realmeal — only smooth-scroll for in-page anchors
-  if (id.startsWith('#/')) return;
+  if (id.startsWith("#/")) return;
   const el = document.querySelector(id);
   if (!el) return;
   e.preventDefault();
@@ -65,47 +65,48 @@ const rootRoute = createRootRoute({
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: "/",
   component: PortfolioPage,
 });
 
 const realmealRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/realmeal',
+  path: "/realmeal",
   component: RealMealSite,
 });
 
 const behealthyRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/behealthy',
+  path: "/behealthy",
   component: BeHealthyPage,
 });
 
 const behealtyRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/behealty',
+  path: "/behealty",
   component: BeHealthyPage,
 });
 
 const visitorsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/visitors',
+  path: "/visitors",
   component: VisitorsPage,
 });
 
 const travellersRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/travellers',
+  path: "/travellers",
   component: TravellersPage,
 });
 
-const travellersTypoRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/traverllers',
-  component: TravellersPage,
-});
-
-const routeTree = rootRoute.addChildren([indexRoute, realmealRoute, behealthyRoute, behealtyRoute, visitorsRoute, travellersRoute, travellersTypoRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  realmealRoute,
+  behealthyRoute,
+  behealtyRoute,
+  visitorsRoute,
+  travellersRoute,
+]);
 
 const hashHistory = createHashHistory();
 
@@ -114,10 +115,10 @@ const router = createRouter({
   history: hashHistory,
 });
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider>
       <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>,
-)
+);
