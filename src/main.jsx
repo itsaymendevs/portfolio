@@ -59,6 +59,7 @@ function RootWithTracker() {
   return <Outlet />;
 }
 
+// hawd
 const rootRoute = createRootRoute({
   component: RootWithTracker,
 });
