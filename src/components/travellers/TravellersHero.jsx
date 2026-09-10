@@ -94,7 +94,7 @@ export default function TravellersHero() {
                 }}
                 className="travellers-display text-[42px] max-sm:max-h-[710px]:text-[38px] [@media((max-width:768px)_and_(max-height:710px))]:text-[38px] font-normal leading-[1.25] tracking-[-0.02em] text-white sm:text-[52px] lg:text-[80px] xl:text-[92px]"
                 style={{
-                  fontFamily: '"Instrument Sans", sans-serif',
+                  fontFamily: "'Outfit Variable', sans-serif",
                   fontWeight: 600,
                 }}
               >

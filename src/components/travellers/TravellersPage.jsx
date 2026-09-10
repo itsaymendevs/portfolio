@@ -1,5 +1,6 @@
 import "./travellers.css";
 import TravellersHero from "./TravellersHero";
+import TravellersSteps from "./TravellersSteps";
 import { Component } from "react";
 
 class TravellersErrorBoundary extends Component {
@@ -31,6 +32,7 @@ export default function TravellersPage() {
     <TravellersErrorBoundary>
       <div className="travellers-root min-h-screen w-full">
         <TravellersHero />
+        <TravellersSteps />
       </div>
     </TravellersErrorBoundary>
   );
