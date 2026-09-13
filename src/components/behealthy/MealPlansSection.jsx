@@ -40,7 +40,7 @@ const PLANS = [
 ];
 
 const DESC =
-  "— Choose from balanced, high-protein, or plant-based plans, crafted around your taste, schedule, and goals. Enjoy chef-crafted meals, flexible deliveries, easy swaps, and expert guidance to stay nourished and energized.";
+  "— Choose from balanced, high-protein, or plant-based plans, crafted around your taste, schedule, and goals. Enjoy chef-crafted meals, flexible deliveries, easy swaps";
 
 export default function MealPlansSection() {
   const [cardVisible, setCardVisible] = useState(false);
@@ -229,8 +229,8 @@ export default function MealPlansSection() {
               className="mt-6 flex flex-wrap items-center gap-2"
             >
               <div className="flex -space-x-1.5">
-                {Array.from({ length: 10 }).map((_, i) => {
-                  const idx = (current * 2 + i) % 10;
+                {Array.from({ length: 8 }).map((_, i) => {
+                  const idx = (current * 2 + i) % 8;
                   const src = `/behealthy/images/meal-${idx + 1}.png`;
                   return (
                     <motion.div
@@ -271,7 +271,9 @@ export default function MealPlansSection() {
                     aria-label={`Go to plan ${i + 1}`}
                     onClick={() => goTo(i)}
                     className={`h-[2px] rounded-full transition-all duration-500 ${
-                      i === current ? "w-10 bg-white" : "w-4 bg-white/40 hover:bg-white/70"
+                      i === current
+                        ? "w-10 bg-white"
+                        : "w-4 bg-white/40 hover:bg-white/70"
                     }`}
                   />
                 ))}
@@ -295,7 +297,7 @@ export default function MealPlansSection() {
                 return (
                   <div
                     key={`${p.id}-${idx}`}
-                    className="group flex h-[380px] w-[75vw] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] sm:shadow-[0_6px_18px_rgba(0,0,0,0.12)] sm:h-[420px] sm:max-w-none sm:w-[310px] lg:h-[440px] lg:w-[350px]"
+                    className="group flex h-[380px] w-[75vw] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[20px] border border-white/25 bg-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.18)] backdrop-blur-[12px] sm:h-[420px] sm:max-w-none sm:w-[310px] lg:h-[440px] lg:w-[350px]"
                     style={{
                       opacity:
                         idx % PLANS.length < cardsVisible
@@ -315,26 +317,26 @@ export default function MealPlansSection() {
                       <div
                         className={`grid h-9 w-9 place-items-center rounded-full border text-[13px] transition-all duration-300 ${
                           isActive
-                            ? "border-[#0f6437] bg-[#0f6437] text-white shadow-[0_4px_12px_rgba(15,100,55,0.2)]"
-                            : "border-[#0f6437]/15 bg-[#0f6437]/10 text-[#0f6437] group-hover:border-[#0f6437]/30 group-hover:bg-[#0f6437]/15"
+                            ? "border-white/60 bg-white text-[#0f6437] shadow-[0_4px_12px_rgba(0,0,0,0.25)]"
+                            : "border-white/30 bg-white/10 text-white group-hover:border-white/50 group-hover:bg-white/20"
                         }`}
                       >
                         <Icon size={16} strokeWidth={1.8} />
                       </div>
-                      <div className="mt-8 text-[11px] font-medium uppercase tracking-[0.14em] text-[#0f6437]">
+                      <div className="mt-8 text-[11px] font-medium uppercase tracking-[0.14em] text-white/70">
                         {p.label}
                       </div>
                       <div
-                        className="mt-1 text-[18px] font-semibold leading-tight text-black sm:text-[19px]"
+                        className="mt-1 text-[18px] font-semibold leading-tight text-white sm:text-[19px]"
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {p.title}
                       </div>
-                      <div className="mt-2 line-clamp-2 text-[14px] leading-[1.6] text-black/60">
+                      <div className="mt-2 line-clamp-2 text-[14px] leading-[1.6] text-white/70">
                         {p.desc}
                       </div>
                     </div>
-                    <div className="flex h-[52%] w-full shrink-0 items-center justify-center bg-white p-3">
+                    <div className="flex h-[52%] w-full shrink-0 items-center justify-center p-3">
                       <img
                         src={p.img}
                         alt={p.title}
@@ -362,11 +364,11 @@ export default function MealPlansSection() {
                   type="button"
                   aria-label={`Go to plan ${i + 1}`}
                   onClick={() => goTo(i)}
-className={`h-[2px] rounded-full transition-all duration-500 ${
-                      i === current
-                        ? "w-10 bg-white"
-                        : "w-4 bg-white/40 hover:bg-white/70"
-                    }`}
+                  className={`h-[2px] rounded-full transition-all duration-500 ${
+                    i === current
+                      ? "w-10 bg-white"
+                      : "w-4 bg-white/40 hover:bg-white/70"
+                  }`}
                 />
               ))}
             </div>

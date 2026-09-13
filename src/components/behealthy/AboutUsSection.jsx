@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const LINES = [
   "Be Healthy started as a simple idea: eating well should feel personal, joyful and easy.",
-  "Today we are a meal plan kitchen and a welcoming restaurant — with a full menu and relaxed dine-in, all crafted around your body, your taste and your daily life.",
+  "Today we are a meal plan kitchen and a welcoming restaurant, with a full menu and relaxed dine-in, all crafted around your body, your taste and your daily life.",
 ];
 
 export default function AboutUsSection() {
@@ -250,7 +250,7 @@ export default function AboutUsSection() {
                     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
                   },
                 }}
-                className="w-full font-medium leading-[1.45] tracking-[0.018em] text-[18px] sm:text-[21px] lg:text-[25px] xl:text-[28px] text-black"
+                className="w-full font-medium leading-[1.45] tracking-[0.018em] text-[16px] sm:text-[19px] lg:text-[22px] xl:text-[24px] text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {parts.map((part, j) =>
