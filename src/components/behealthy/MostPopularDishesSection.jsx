@@ -50,7 +50,7 @@ export default function MostPopularDishesSection() {
           {/* Left */}
           <div className="w-full max-w-[680px] lg:w-[48%]">
             <h2
-              className="whitespace-normal text-[38px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[46px] md:text-[52px] lg:whitespace-nowrap lg:text-[68px] xl:text-[78px]"
+              className="whitespace-normal text-[40px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[48px] lg:whitespace-nowrap lg:text-[56px] xl:text-[64px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {TITLE_WORDS.map((w, i) => (
@@ -86,7 +86,7 @@ export default function MostPopularDishesSection() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={i < descLines ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:text-[17px] lg:text-[17px]"
+                    className="text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:text-[17px] [text-wrap:pretty]"
                   >
                     {line}
                   </motion.p>

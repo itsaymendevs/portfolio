@@ -79,7 +79,7 @@ export default function Navbar() {
               <motion.button
                 key={label}
                 onClick={() => handleNav(label)}
-                className={`relative overflow-hidden rounded-full px-[22px] py-[10px] text-[13.5px] font-medium transition-colors ${
+                className={`relative overflow-hidden rounded-full px-[22px] py-[10px] text-[14px] font-medium transition-colors ${
                   isActive ? "text-[#0f6437]" : "text-white hover:text-white/90"
                 }`}
                 style={
@@ -118,7 +118,7 @@ export default function Navbar() {
             <button
               key={label}
               onClick={() => handleNav(label)}
-              className={`relative rounded-full px-[22px] py-[10px] text-[13.5px] font-medium transition-colors ${
+              className={`relative rounded-full px-[22px] py-[10px] text-[14px] font-medium transition-colors ${
                 isActive ? "text-black" : "text-white/85 hover:text-white"
               }`}
             >

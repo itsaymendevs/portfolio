@@ -1,15 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Salad,
-  Dumbbell,
-  Leaf,
-  Feather,
-} from "lucide-react";
+import { Salad, Dumbbell, Leaf, Feather } from "lucide-react";
 
-const TITLE_WORDS = ["Our", "Meal", "Plans."];
+const TITLE_WORDS = ["Our", "Meal", "Plans"];
 
 const PLANS = [
   {
@@ -98,7 +91,18 @@ export default function MealPlansSection() {
   }, []);
 
   const next = useCallback(() => go(1), [go]);
-  const prev = useCallback(() => go(-1), [go]);
+
+  const goTo = useCallback((index) => {
+    if (isTransitioning.current) return;
+    isTransitioning.current = true;
+    setCurrent((index + PLANS.length) % PLANS.length);
+    setTimeout(() => (isTransitioning.current = false), 620);
+  }, []);
+
+  const scrollToConsultation = useCallback(() => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   useEffect(() => {
     if (!cardVisible) return;
@@ -126,14 +130,14 @@ export default function MealPlansSection() {
     <section
       id="plans"
       ref={sectionRef}
-      className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-[#f8f8f8] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
+      className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-[#0f6437] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
     >
-      {/* Rectangle lines pattern — dots removed */}
+      {/* Rectangle lines pattern */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.11]"
+        className="pointer-events-none absolute inset-0 opacity-[0.12]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.11) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.11) 1px, transparent 1px)",
+            "linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
         aria-hidden="true"
@@ -141,39 +145,37 @@ export default function MealPlansSection() {
       {/* Vertical Book Consultation — desktop only, right edge, greenish with animated background */}
       <motion.button
         type="button"
-        initial={{ opacity: 0, x: 16, backgroundPosition: "0% 50%" }}
-        animate={
-          cardVisible
-            ? {
-                opacity: 1,
-                x: 0,
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }
-            : { opacity: 0, x: 16 }
-        }
+        initial={{ opacity: 0, x: 16 }}
+        animate={cardVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 16 }}
         transition={{
           opacity: { duration: 0.6, delay: 1.2, ease: [0.16, 1, 0.3, 1] },
           x: { duration: 0.6, delay: 1.2, ease: [0.16, 1, 0.3, 1] },
-          backgroundPosition: { duration: 6, ease: "easeInOut", repeat: Infinity },
         }}
-        className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-l-[14px] px-3 py-7 shadow-[0_4px_16px_rgba(0,0,0,0.14)] lg:flex"
-        style={{
-          background: "linear-gradient(135deg, #0a4a28 0%, #0f6437 35%, #14914f 65%)",
-          backgroundSize: "200% 200%",
-        }}
+        className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-l-[14px] border border-white/25 bg-white/10 px-3 py-7 shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-[12px] lg:flex"
         aria-label="Book Consultation"
       >
         <motion.span
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-[#0f6437]/10 to-transparent"
           initial={{ x: "-100%" }}
           animate={{ x: "200%" }}
-          transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 2.8, ease: "easeInOut" }}
+          transition={{
+            duration: 2.2,
+            repeat: Infinity,
+            repeatDelay: 2.8,
+            ease: "easeInOut",
+          }}
           style={{ transform: "skewX(-12deg)" }}
         />
-        <span className="relative z-10 text-[12px] font-semibold uppercase tracking-[0.16em] text-white" style={{ writingMode: "vertical-rl" }}>
+        <span
+          className="relative z-10 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
+          style={{ writingMode: "vertical-rl" }}
+        >
           Book Consultation
         </span>
-        <span className="relative z-10 h-1.5 w-1.5 rounded-full bg-white/80" aria-hidden="true" />
+        <span
+          className="relative z-10 h-1.5 w-1.5 rounded-full bg-white/80"
+          aria-hidden="true"
+        />
       </motion.button>
       <motion.div
         initial={{ opacity: 0, y: 18 }}
@@ -184,7 +186,7 @@ export default function MealPlansSection() {
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between relative z-10">
           <div className="w-full max-w-[480px] lg:w-[38%]">
             <h2
-              className="whitespace-nowrap text-[42px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[48px] lg:text-[56px] xl:text-[62px]"
+              className="whitespace-nowrap text-[40px] font-bold leading-[0.95] tracking-[-0.03em] text-white sm:text-[48px] lg:text-[56px] xl:text-[64px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {TITLE_WORDS.map((w, i) => (
@@ -206,8 +208,12 @@ export default function MealPlansSection() {
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={cardVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-6 min-h-[72px] text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 sm:min-h-[72px] sm:text-[17px] lg:text-[18px] italic"
+              transition={{
+                duration: 0.6,
+                delay: 0.35,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="mt-6 min-h-[72px] text-[16px] leading-[1.7] tracking-[0.01em] text-white/70 sm:min-h-[72px] sm:text-[17px] italic [text-wrap:pretty]"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               {DESC}
@@ -215,7 +221,11 @@ export default function MealPlansSection() {
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={cardVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.5,
+                delay: 0.5,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="mt-6 flex flex-wrap items-center gap-2"
             >
               <div className="flex -space-x-1.5">
@@ -230,17 +240,21 @@ export default function MealPlansSection() {
                       transition={{ duration: 0.3, delay: i * 0.03 }}
                       className="h-7 w-7 shrink-0 overflow-hidden rounded-full border border-white bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] sm:h-8 sm:w-8"
                     >
-                      <img src={src} alt={`Sample ${i + 1}`} className="h-full w-full object-cover" />
+                      <img
+                        src={src}
+                        alt={`Sample ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
                     </motion.div>
                   );
                 })}
               </div>
-              <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.04em] text-black/40">
+              <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.04em] text-white/70">
                 +100 options
               </span>
             </motion.div>
             <div
-              className="hidden w-full items-center gap-4 lg:flex"
+              className="hidden w-full items-center lg:flex"
               style={{
                 opacity: buttonsVisible ? 1 : 0,
                 transform: buttonsVisible ? "translateY(0)" : "translateY(8px)",
@@ -249,37 +263,26 @@ export default function MealPlansSection() {
                 marginTop: "64px",
               }}
             >
-              <div className="flex gap-3">
-                <button
-                  type="button"
-                  aria-label="Previous plan"
-                  onClick={prev}
-                  className="grid h-10 w-10 place-items-center rounded-full bg-black text-white shadow-[0_4px_16px_rgba(0,0,0,0.22)] transition hover:bg-[#1a1a1a]"
-                >
-                  <ArrowLeft size={16} strokeWidth={1.8} />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Next plan"
-                  onClick={next}
-                  className="grid h-10 w-10 place-items-center rounded-full bg-black text-white shadow-[0_4px_16px_rgba(0,0,0,0.22)] transition hover:bg-[#1a1a1a]"
-                >
-                  <ArrowRight size={16} strokeWidth={1.8} />
-                </button>
-              </div>
-              <div className="h-[2px] flex-1 overflow-hidden rounded-full bg-black/10">
-                <div
-                  className="h-full rounded-full bg-[#0A2E1F] transition-all duration-500"
-                  style={{ width: `${((current + 1) / PLANS.length) * 100}%` }}
-                />
+              <div className="flex items-center gap-2.5">
+                {PLANS.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`Go to plan ${i + 1}`}
+                    onClick={() => goTo(i)}
+                    className={`h-[2px] rounded-full transition-all duration-500 ${
+                      i === current ? "w-10 bg-white" : "w-4 bg-white/40 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="w-full overflow-hidden lg:w-[692px] lg:shrink-0 p-2 -m-2 pr-2 sm:pr-0 lg:p-4 lg:-m-4 lg:pr-0">
+          <div className="mx-auto w-[75vw] overflow-hidden sm:w-[310px] lg:mx-0 lg:w-[732px] lg:shrink-0">
             <div
               ref={trackRef}
-              className="flex w-max gap-5 sm:gap-8 pb-2 pr-6 sm:pr-0 lg:pb-6"
+              className="flex w-max gap-5 sm:gap-8"
               style={{
                 transition: "transform 600ms cubic-bezier(0.25,1,0.5,1)",
                 willChange: "transform",
@@ -292,7 +295,7 @@ export default function MealPlansSection() {
                 return (
                   <div
                     key={`${p.id}-${idx}`}
-                    className="group flex h-[380px] w-[75vw] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.06)] sm:shadow-[0_8px_24px_rgba(0,0,0,0.06)] sm:h-[420px] sm:w-[310px] lg:h-[440px] lg:w-[330px]"
+                    className="group flex h-[380px] w-[75vw] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] sm:shadow-[0_6px_18px_rgba(0,0,0,0.12)] sm:h-[420px] sm:max-w-none sm:w-[310px] lg:h-[440px] lg:w-[350px]"
                     style={{
                       opacity:
                         idx % PLANS.length < cardsVisible
@@ -344,7 +347,7 @@ export default function MealPlansSection() {
             </div>
           </div>
           <div
-            className="mt-6 flex w-full items-center gap-4 lg:hidden"
+            className="mt-6 flex w-full items-center justify-between gap-4 lg:hidden"
             style={{
               opacity: buttonsVisible ? 1 : 0,
               transform: buttonsVisible ? "translateY(0)" : "translateY(8px)",
@@ -352,30 +355,43 @@ export default function MealPlansSection() {
                 "opacity 500ms ease, transform 500ms cubic-bezier(0.16,1,0.3,1)",
             }}
           >
-            <div className="flex gap-3">
-              <button
-                type="button"
-                aria-label="Previous plan"
-                onClick={prev}
-                className="grid h-9 w-9 place-items-center rounded-full bg-black text-white shadow-[0_4px_16px_rgba(0,0,0,0.22)] transition hover:bg-[#1a1a1a]"
-              >
-                <ArrowLeft size={15} strokeWidth={1.8} />
-              </button>
-              <button
-                type="button"
-                aria-label="Next plan"
-                onClick={next}
-                className="grid h-9 w-9 place-items-center rounded-full bg-black text-white shadow-[0_4px_16px_rgba(0,0,0,0.22)] transition hover:bg-[#1a1a1a]"
-              >
-                <ArrowRight size={15} strokeWidth={1.8} />
-              </button>
+            <div className="flex items-center gap-2.5">
+              {PLANS.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Go to plan ${i + 1}`}
+                  onClick={() => goTo(i)}
+className={`h-[2px] rounded-full transition-all duration-500 ${
+                      i === current
+                        ? "w-10 bg-white"
+                        : "w-4 bg-white/40 hover:bg-white/70"
+                    }`}
+                />
+              ))}
             </div>
-            <div className="h-[2px] flex-1 overflow-hidden rounded-full bg-black/10">
-              <div
-                className="h-full rounded-full bg-[#0A2E1F] transition-all duration-500"
-                style={{ width: `${((current + 1) / PLANS.length) * 100}%` }}
-              />
-            </div>
+            <button
+              type="button"
+              onClick={scrollToConsultation}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-medium tracking-[0.02em] text-white backdrop-blur-[12px] transition hover:bg-white/20 active:scale-[0.98]"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              Book Consultation
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </motion.div>

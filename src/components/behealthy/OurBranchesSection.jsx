@@ -74,7 +74,7 @@ export default function OurBranchesSection() {
         <div className="flex w-full flex-col justify-between lg:w-[30%] lg:self-stretch lg:py-2">
           <div className="space-y-6 sm:space-y-8">
           <h2
-            className="whitespace-nowrap text-left text-[30px] font-bold leading-[0.85] tracking-[-0.04em] text-black sm:text-[34px] lg:whitespace-normal lg:text-[64px] xl:text-[78px]"
+            className="whitespace-nowrap text-left text-[32px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[40px] lg:whitespace-normal lg:text-[56px] xl:text-[64px]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {TITLE_WORDS.map((w, i) => (
@@ -98,10 +98,10 @@ export default function OurBranchesSection() {
               className="max-w-[420px] space-y-3 text-left"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              <p className="text-[13px] italic leading-[1.7] text-black/60 sm:text-[14px]">
+              <p className="text-[15px] italic leading-[1.7] tracking-[0.01em] text-black/60 sm:text-[16px] [text-wrap:pretty]">
                 — Fresh kitchens across the Emirates, dine in, pick up, or get it delivered. Open daily from early morning to late evening for your convenience.
               </p>
-              <p className="text-[13px] italic leading-[1.7] text-black/60 sm:text-[14px]">
+              <p className="text-[15px] italic leading-[1.7] tracking-[0.01em] text-black/60 sm:text-[16px] [text-wrap:pretty]">
                 Discover our welcoming spaces in Dubai, Abu Dhabi and Sharjah, crafted for fresh daily dining, warm hospitality and effortless healthy living, with seasonal menus and chef-led guidance every day.
               </p>
             </motion.div>

@@ -45,7 +45,7 @@ export default function StayConnectedSection() {
         {/* Left — big title + one line paragraph */}
         <div className="w-full lg:w-[48%]">
           <h2
-            className="text-left text-[32px] font-bold leading-[0.9] tracking-[-0.03em] text-black sm:text-[36px] lg:text-[44px] xl:text-[52px]"
+            className="text-left text-[34px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[38px] lg:text-[44px] xl:text-[52px]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {TITLE_WORDS.map((w, i) => (

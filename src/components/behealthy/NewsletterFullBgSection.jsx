@@ -52,7 +52,7 @@ export default function NewsletterFullBgSection() {
 
       <div className="relative z-10 mx-auto flex max-w-[1440px] flex-col items-center px-6 py-28 text-center sm:px-10 sm:py-32 lg:px-16 lg:py-40">
         <h2
-          className="max-w-[720px] text-[22px] font-bold capitalize leading-[0.9] tracking-[-0.02em] text-white sm:text-[26px] lg:text-[34px] xl:text-[38px]"
+          className="max-w-[720px] text-[22px] font-bold capitalize leading-[0.95] tracking-[-0.03em] text-white sm:text-[26px] lg:text-[34px] xl:text-[38px]"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {[
@@ -101,11 +101,11 @@ export default function NewsletterFullBgSection() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="h-[44px] w-full rounded-full border border-white/15 bg-white/10 px-4 pr-[120px] text-[12px] text-white placeholder:text-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-[12px] focus:border-white/25 focus:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/15 sm:h-[52px] sm:px-5 sm:pr-[132px] sm:text-[13px]"
+              className="h-[44px] w-full rounded-full border border-white/15 bg-white/10 px-4 pr-[120px] text-[13px] text-white placeholder:text-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-[12px] focus:border-white/25 focus:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/15 sm:h-[52px] sm:px-5 sm:pr-[132px]"
             />
             <button
               type="submit"
-              className="absolute right-1 top-1 bottom-1 rounded-full bg-black px-5 text-[12px] font-medium text-white shadow hover:bg-black/90 active:scale-[0.98] sm:px-6 sm:text-[13px]"
+              className="absolute right-1 top-1 bottom-1 rounded-full bg-black px-5 text-[13px] font-medium text-white shadow hover:bg-black/90 active:scale-[0.98] sm:px-6"
             >
               {sent ? "Subscribed ✓" : "Subscribe"}
             </button>

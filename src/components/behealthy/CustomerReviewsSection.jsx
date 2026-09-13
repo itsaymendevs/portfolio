@@ -67,7 +67,7 @@ export default function CustomerReviewsSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="pointer-events-none absolute -top-8 left-0 hidden select-none font-serif text-[148px] leading-none tracking-[-0.08em] text-black/[0.07] sm:block sm:text-[180px] lg:-top-12 lg:text-[220px]"
+            className="pointer-events-none absolute -top-8 left-0 hidden select-none font-display text-[148px] leading-none tracking-[-0.08em] text-black/[0.07] sm:block sm:text-[180px] lg:-top-12 lg:text-[220px]"
             aria-hidden="true"
           >
             “
@@ -77,7 +77,7 @@ export default function CustomerReviewsSection() {
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="pointer-events-none absolute -top-2 left-0 select-none font-serif text-[96px] leading-none text-black/[0.07] sm:hidden"
+            className="pointer-events-none absolute -top-2 left-0 select-none font-display text-[96px] leading-none text-black/[0.07] sm:hidden"
             aria-hidden="true"
           >
             “
@@ -89,7 +89,7 @@ export default function CustomerReviewsSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={visible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-[760px] font-serif text-[18px] font-medium leading-[1.4] tracking-[-0.015em] text-black sm:text-[23px] lg:text-[28px]"
+              className="max-w-[760px] text-[18px] font-medium leading-[1.4] tracking-[-0.015em] text-black sm:text-[23px] lg:text-[28px] [text-wrap:pretty]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {review.text}

@@ -84,7 +84,7 @@ export default function HowItWorksSection() {
         {/* Left — title + desc */}
         <div className="w-full text-left lg:w-[32%] lg:text-left">
           <h2
-            className="text-[42px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[48px] lg:text-[56px] xl:text-[64px]"
+            className="whitespace-normal text-[40px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[48px] lg:text-[56px] xl:text-[64px]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {TITLE_WORDS.map((w, i) => (
@@ -126,7 +126,7 @@ export default function HowItWorksSection() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={i < descLines ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:text-[17px]"
+                  className="text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 italic sm:text-[17px] [text-wrap:pretty]"
                 >
                   {line}
                 </motion.p>

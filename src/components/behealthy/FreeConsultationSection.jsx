@@ -141,7 +141,7 @@ export default function FreeConsultationSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-[28px] font-bold leading-[0.9] tracking-[-0.03em] text-black sm:text-[32px] lg:text-[40px]"
+            className="mt-4 text-[28px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[32px] lg:text-[40px]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Get Your Free Consultation

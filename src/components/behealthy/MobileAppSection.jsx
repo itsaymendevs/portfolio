@@ -113,7 +113,7 @@ export default function MobileAppSection() {
         {/* Right — title, desc, badges — order first on mobile so badges above phones */}
         <div className="w-full max-w-[560px] lg:w-1/2 order-1 lg:order-2">
           <h2
-            className="text-[44px] font-bold leading-[0.95] tracking-[-0.03em] text-white sm:text-[52px] lg:text-[60px] xl:text-[72px]"
+            className="text-[40px] font-bold leading-[0.95] tracking-[-0.03em] text-white sm:text-[48px] lg:text-[56px] xl:text-[64px]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {TITLE_WORDS.map((w, i) => (
@@ -156,7 +156,7 @@ export default function MobileAppSection() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={i < descLines ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[16px] leading-[1.7] tracking-[0.01em] text-white/60 italic sm:text-[17px]"
+                  className="text-[16px] leading-[1.7] tracking-[0.01em] text-white/60 italic sm:text-[17px] [text-wrap:pretty]"
                 >
                   {line}
                 </motion.p>

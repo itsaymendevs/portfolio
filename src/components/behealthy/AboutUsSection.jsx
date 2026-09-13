@@ -1,46 +1,9 @@
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const LINES = [
   "Be Healthy started as a simple idea: eating well should feel personal, joyful and easy.",
   "Today we are a meal plan kitchen and a welcoming restaurant — with a full menu and relaxed dine-in, all crafted around your body, your taste and your daily life.",
-  "Fresh ingredients, thoughtful portions and genuine support make healthy eating sustainable, delicious and truly yours.",
 ];
-
-const STATS = [
-  { value: 8000, suffix: "+", label: "Happy Clients" },
-  { value: 30000, suffix: "+", label: "Meals Served" },
-  { value: 600, suffix: "+", label: "Recipes" },
-  { value: 70000, suffix: "+", label: "Deliveries" },
-];
-
-function Counter({ value, suffix }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    let raf;
-    const start = performance.now();
-    const dur = 1400;
-    const tick = (now) => {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setCount(Math.floor(eased * value));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, value]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {count.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
 
 export default function AboutUsSection() {
   const leaves = [
@@ -309,57 +272,6 @@ export default function AboutUsSection() {
             );
           })}
         </div>
-        <div className="mt-8 h-px w-12 opacity-0" aria-hidden="true" />
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 10 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { delay: 0.9, duration: 0.6, staggerChildren: 0.08 },
-            },
-          }}
-          className="relative mt-10 flex flex-wrap justify-between gap-8 pt-10 sm:gap-10 lg:flex-nowrap lg:gap-8"
-        >
-          <div
-            className="pointer-events-none absolute left-0 right-0 top-0 h-px overflow-hidden"
-            aria-hidden="true"
-          >
-            <motion.div
-              className="h-full w-[200%]"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(90deg, rgba(10,46,31,0.18) 0 10px, transparent 10px 20px)",
-              }}
-              animate={{ x: ["-50%", "0%"] }}
-              transition={{ duration: 3.8, repeat: Infinity, ease: "linear" }}
-            />
-          </div>
-          {STATS.map((s) => (
-            <motion.div
-              key={s.label}
-              variants={{
-                hidden: { y: 10, opacity: 0 },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-                },
-              }}
-              className="min-w-[140px] flex-1 text-left lg:flex-none"
-            >
-              <div
-                className="font-display text-[28px] font-bold leading-none tracking-[0.02em] text-black sm:text-[32px] lg:text-[36px]"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                <Counter value={s.value} suffix={s.suffix} />
-              </div>
-              <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.15em] text-black/50">
-                {s.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </motion.div>
     </section>
   );
