@@ -59,7 +59,7 @@ export default function AleensPreloader({ onDone }) {
             className="relative z-10 flex flex-col items-center"
           >
             <div
-              className="flex items-center gap-2 text-[18px] font-bold tracking-[-0.02em] sm:text-[22px]"
+              className="flex items-center gap-2 text-[15px] font-bold tracking-[-0.02em] sm:text-[22px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {WORDS.map((w, i) => (

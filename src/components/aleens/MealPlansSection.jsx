@@ -29,6 +29,30 @@ const PLANS = [
     Icon: Leaf,
     img: "/aleens/images/meal-plan-3.png",
   },
+  {
+    id: 4,
+    label: "Plan 04",
+    title: "Lunch Plan",
+    desc: "Balanced lunch bowls, portioned and ready for your midday refuel.",
+    Icon: Salad,
+    img: "/aleens/images/meal-plan-1.png",
+  },
+  {
+    id: 5,
+    label: "Plan 05",
+    title: "Weight Loss",
+    desc: "Calorie-smart meals crafted to support your weight loss goals.",
+    Icon: Dumbbell,
+    img: "/aleens/images/meal-plan-2.png",
+  },
+  {
+    id: 6,
+    label: "Plan 06",
+    title: "Wellness",
+    desc: "Wholesome, nutrient-rich meals for everyday energy and balance.",
+    Icon: Leaf,
+    img: "/aleens/images/meal-plan-3.png",
+  },
 ];
 
 const DESC =
@@ -122,53 +146,68 @@ export default function MealPlansSection() {
     <section
       id="plans"
       ref={sectionRef}
-      className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-[#00a651] px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32"
+      className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-white px-6 pt-24 pb-20 sm:px-10 sm:pt-28 sm:pb-24 lg:px-16 lg:pt-32 lg:pb-28"
     >
+      {/* Floating meal plates in the background */}
+      <motion.img
+        src="/aleens/images/sub-1.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-10 top-16 z-0 h-20 w-20 rotate-[-12deg] object-contain opacity-[0.14] sm:h-24 sm:w-24 lg:top-24 lg:h-28 lg:w-28"
+        animate={{ y: [0, -14, 0], rotate: [-12, -6, -12] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.img
+        src="/aleens/images/sub-2.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[6%] top-14 z-0 h-16 w-16 rotate-[10deg] object-contain opacity-[0.12] sm:h-20 sm:w-20 lg:top-20 lg:h-24 lg:w-24"
+        animate={{ y: [0, 12, 0], rotate: [10, 4, 10] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.img
+        src="/aleens/images/sub-3.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-8 bottom-24 z-0 h-24 w-24 rotate-[8deg] object-contain opacity-[0.12] sm:right-0 sm:h-28 sm:w-28 lg:bottom-32 lg:h-32 lg:w-32"
+        animate={{ y: [0, -10, 0], rotate: [8, 14, 8] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.img
+        src="/aleens/images/sub-4.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[8%] bottom-16 z-0 hidden h-20 w-20 rotate-[-8deg] object-contain opacity-[0.12] sm:block sm:left-[14%] sm:h-24 sm:w-24 lg:h-28 lg:w-28"
+        animate={{ y: [0, 10, 0], rotate: [-8, -2, -8] }}
+        transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.img
+        src="/aleens/images/sub-6.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[22%] top-1/2 z-0 hidden h-16 w-16 rotate-[-6deg] object-contain opacity-[0.12] lg:block lg:h-20 lg:w-20"
+        animate={{ y: [0, 9, 0], rotate: [-6, 2, -6] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.img
+        src="/aleens/images/sub-5.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[20%] top-1/3 z-0 hidden h-16 w-16 rotate-[7deg] object-contain opacity-[0.12] lg:block lg:h-20 lg:w-20"
+        animate={{ y: [0, -8, 0], rotate: [7, -3, 7] }}
+        transition={{ duration: 9.5, repeat: Infinity, ease: "easeInOut" }}
+      />
       {/* Rectangle lines pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.15]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
+            "linear-gradient(rgba(0,166,81,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,166,81,0.15) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
         aria-hidden="true"
       />
-      {/* Vertical Book Consultation — desktop only, right edge, greenish with animated background */}
-      <motion.button
-        type="button"
-        initial={{ opacity: 0, x: 16 }}
-        animate={cardVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 16 }}
-        transition={{
-          opacity: { duration: 0.6, delay: 1.2, ease: [0.16, 1, 0.3, 1] },
-          x: { duration: 0.6, delay: 1.2, ease: [0.16, 1, 0.3, 1] },
-        }}
-        className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-l-[14px] border border-white/25 bg-white/10 px-3 py-7 shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-[12px] lg:flex"
-        aria-label="Book Consultation"
-      >
-        <motion.span
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-[#00a651]/10 to-transparent"
-          initial={{ x: "-100%" }}
-          animate={{ x: "200%" }}
-          transition={{
-            duration: 2.2,
-            repeat: Infinity,
-            repeatDelay: 2.8,
-            ease: "easeInOut",
-          }}
-          style={{ transform: "skewX(-12deg)" }}
-        />
-        <span
-          className="relative z-10 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
-          style={{ writingMode: "vertical-rl" }}
-        >
-          Book Consultation
-        </span>
-        <span
-          className="relative z-10 h-1.5 w-1.5 rounded-full bg-[#f7941d]"
-          aria-hidden="true"
-        />
-      </motion.button>
+{/* Vertical Book Consultation — removed */}
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={cardVisible ? { opacity: 1, y: 0 } : {}}
@@ -178,7 +217,7 @@ export default function MealPlansSection() {
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between relative z-10">
           <div className="w-full max-w-[480px] lg:w-[38%]">
             <h2
-              className="whitespace-nowrap text-[40px] font-bold leading-[0.95] tracking-[-0.03em] text-white sm:text-[48px] lg:text-[56px] xl:text-[64px]"
+              className="whitespace-nowrap text-[40px] font-bold leading-[0.95] tracking-[-0.03em] text-black sm:text-[48px] lg:text-[56px] xl:text-[64px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {TITLE_WORDS.map((w, i) => (
@@ -205,7 +244,7 @@ export default function MealPlansSection() {
                 delay: 0.35,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="mt-6 min-h-[72px] text-[16px] leading-[1.7] tracking-[0.01em] text-white/70 sm:min-h-[72px] sm:text-[17px] italic [text-wrap:pretty]"
+              className="mt-6 min-h-[72px] text-[16px] leading-[1.7] tracking-[0.01em] text-black/60 sm:min-h-[72px] sm:text-[17px] italic [text-wrap:pretty]"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               {DESC}
@@ -230,7 +269,7 @@ export default function MealPlansSection() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: i * 0.03 }}
-                      className="h-7 w-7 shrink-0 overflow-hidden rounded-full border border-white bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] sm:h-8 sm:w-8"
+                      className="h-7 w-7 shrink-0 overflow-hidden rounded-full border border-black/10 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] sm:h-8 sm:w-8"
                     >
                       <img
                         src={src}
@@ -241,7 +280,7 @@ export default function MealPlansSection() {
                   );
                 })}
               </div>
-              <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.04em] text-white/70">
+              <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.04em] text-black/50">
                 +100 options
               </span>
             </motion.div>
@@ -264,8 +303,8 @@ export default function MealPlansSection() {
                     onClick={() => goTo(i)}
                     className={`h-[2px] rounded-full transition-all duration-500 ${
                       i === current
-                        ? "w-10 bg-white"
-                        : "w-4 bg-white/40 hover:bg-white/70"
+                        ? "w-10 bg-[#00a651]"
+                        : "w-4 bg-black/15 hover:bg-black/30"
                     }`}
                   />
                 ))}
@@ -273,7 +312,7 @@ export default function MealPlansSection() {
             </div>
           </div>
 
-          <div className="mx-auto w-[75vw] overflow-hidden sm:w-[310px] lg:mx-0 lg:w-[732px] lg:shrink-0">
+          <div className="mx-auto w-[75vw] overflow-hidden pb-5 pt-2 sm:w-[310px] lg:mx-0 lg:w-[732px] lg:shrink-0">
             <div
               ref={trackRef}
               className="flex w-max gap-5 sm:gap-8"
@@ -289,7 +328,7 @@ export default function MealPlansSection() {
                 return (
                   <div
                     key={`${p.id}-${idx}`}
-                    className="group flex h-[380px] w-[75vw] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[20px] border border-white/25 bg-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.18)] backdrop-blur-[12px] sm:h-[420px] sm:max-w-none sm:w-[310px] lg:h-[440px] lg:w-[350px]"
+                    className="group flex h-[380px] w-[75vw] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[20px] border border-black/10 bg-white/80 shadow-[0_6px_16px_rgba(0,0,0,0.05)] backdrop-blur-[12px] sm:h-[420px] sm:max-w-none sm:w-[310px] lg:h-[440px] lg:w-[350px]"
                     style={{
                       opacity:
                         idx % PLANS.length < cardsVisible
@@ -309,22 +348,22 @@ export default function MealPlansSection() {
                       <div
                         className={`grid h-9 w-9 place-items-center rounded-full border text-[13px] transition-all duration-300 ${
                           isActive
-                            ? "border-white/60 bg-white text-[#f7941d] shadow-[0_4px_12px_rgba(0,0,0,0.25)]"
-                            : "border-white/30 bg-white/10 text-white group-hover:border-white/50 group-hover:bg-white/20"
+                            ? "border-[#00a651]/50 bg-[#00a651] text-white shadow-[0_4px_12px_rgba(0,166,81,0.35)]"
+                            : "border-black/15 bg-white text-black/60 group-hover:border-black/30 group-hover:bg-black/5"
                         }`}
                       >
                         <Icon size={16} strokeWidth={1.8} />
                       </div>
-                      <div className="mt-8 text-[11px] font-medium uppercase tracking-[0.14em] text-white/70">
+                      <div className="mt-8 text-[11px] font-medium uppercase tracking-[0.14em] text-black/50">
                         {p.label}
                       </div>
                       <div
-                        className="mt-1 text-[18px] font-semibold leading-tight text-white sm:text-[19px]"
+                        className="mt-1 text-[18px] font-semibold leading-tight text-black sm:text-[19px]"
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {p.title}
                       </div>
-                      <div className="mt-2 line-clamp-2 text-[14px] leading-[1.6] text-white/70">
+                      <div className="mt-2 line-clamp-2 text-[14px] leading-[1.6] text-black/55">
                         {p.desc}
                       </div>
                     </div>
@@ -341,7 +380,7 @@ export default function MealPlansSection() {
             </div>
           </div>
           <div
-            className="mt-6 flex w-full items-center justify-between gap-4 lg:hidden"
+            className="mt-6 flex w-full items-center justify-center lg:hidden"
             style={{
               opacity: buttonsVisible ? 1 : 0,
               transform: buttonsVisible ? "translateY(0)" : "translateY(8px)",
@@ -358,34 +397,12 @@ export default function MealPlansSection() {
                   onClick={() => goTo(i)}
                   className={`h-[2px] rounded-full transition-all duration-500 ${
                     i === current
-                      ? "w-10 bg-white"
-                      : "w-4 bg-white/40 hover:bg-white/70"
+                      ? "w-10 bg-[#00a651]"
+                      : "w-4 bg-black/15 hover:bg-black/30"
                   }`}
                 />
               ))}
             </div>
-            <button
-              type="button"
-              onClick={scrollToConsultation}
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-medium tracking-[0.02em] text-white backdrop-blur-[12px] transition hover:bg-white/20 active:scale-[0.98]"
-              style={{ fontFamily: "var(--font-sans)" }}
-            >
-              Book Consultation
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </button>
           </div>
         </div>
       </motion.div>

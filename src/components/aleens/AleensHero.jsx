@@ -183,8 +183,8 @@ export default function AleensHero() {
             </div>
             <div className="flex items-center justify-between px-1 pt-2.5">
               <div className="text-xs leading-tight text-white/85">
-                <div className="font-medium">Inside Aleens</div>
-                <div className="text-white/60">Fresh kitchen • 01:20</div>
+                <div className="font-medium">Aleens Promo</div>
+                <div className="text-white/60">Fresh • Healthy • Delivered Daily</div>
               </div>
               <button
                 type="button"
