@@ -1,9 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
+const WORDS = ["Fresh", "Tasty", "Healthy", "Delicious"];
+const DOTS = ["•", "•", "•"];
+
 export default function AleensPreloader({ onDone }) {
-  const [progress, setProgress] = useState(0);
   const [exit, setExit] = useState(false);
+  const [filled, setFilled] = useState(0);
 
   useEffect(() => {
     let raf;
@@ -11,8 +14,6 @@ export default function AleensPreloader({ onDone }) {
     const duration = 1100;
     const tick = (now) => {
       const p = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setProgress(Math.floor(eased * 100));
       if (p < 1) raf = requestAnimationFrame(tick);
       else {
         setTimeout(() => {
@@ -24,6 +25,14 @@ export default function AleensPreloader({ onDone }) {
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [onDone]);
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setFilled((f) => (f + 1) % (WORDS.length + 1)),
+      420
+    );
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -49,25 +58,29 @@ export default function AleensPreloader({ onDone }) {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 flex flex-col items-center"
           >
-            <motion.img
-              src="/aleens/images/logo.png"
-              alt="Aleens"
-              className="h-12 w-auto object-contain sm:h-14"
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            />
-
-            <div className="relative mt-8 h-px w-[220px] overflow-hidden rounded-full bg-black/10">
-              <motion.div
-                className="absolute inset-y-0 left-0 rounded-full"
-                style={{
-                  width: `${progress}%`,
-                  background: "linear-gradient(90deg, #00713a 0%, #00a651 55%, #2ec276 100%)",
-                  boxShadow: "0 0 10px rgba(0,166,81,0.32)",
-                  transition: "width 80ms linear",
-                }}
-              />
+            <div
+              className="flex items-center gap-2 text-[18px] font-bold tracking-[-0.02em] sm:text-[22px]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {WORDS.map((w, i) => (
+                <span key={w} className="flex items-center gap-2">
+                  {i > 0 && (
+                    <span className="text-[0.6em] font-normal text-black/15">
+                      {DOTS[i - 1]}
+                    </span>
+                  )}
+                  <motion.span
+                    className="block"
+                    animate={
+                      i < filled ? { opacity: 0.85, scale: 1.02 } : { opacity: 0.15, scale: 1 }
+                    }
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ color: "rgba(0,0,0,1)" }}
+                  >
+                    {w}
+                  </motion.span>
+                </span>
+              ))}
             </div>
           </motion.div>
         </motion.div>
