@@ -13,6 +13,7 @@ import { ThemeProvider } from "./components/ThemeProvider.jsx";
 import PortfolioPage from "./components/PortfolioPage.jsx";
 import { RealMealSite } from "./App.jsx";
 import BeHealthyPage from "./components/behealthy/BeHealthyPage.jsx";
+import AleensPage from "./components/aleens/AleensPage.jsx";
 import TravellersPage from "./components/travellers/TravellersPage.jsx";
 import VisitorsPage from "./components/VisitorsPage.jsx";
 import useVisitorTracker from "./hooks/useVisitorTracker.js";
@@ -88,6 +89,12 @@ const behealtyRoute = createRoute({
   component: BeHealthyPage,
 });
 
+const aleensRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/aleens",
+  component: AleensPage,
+});
+
 const visitorsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/visitors",
@@ -105,6 +112,7 @@ const routeTree = rootRoute.addChildren([
   realmealRoute,
   behealthyRoute,
   behealtyRoute,
+  aleensRoute,
   visitorsRoute,
   travellersRoute,
 ]);

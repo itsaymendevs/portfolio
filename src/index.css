@@ -66,6 +66,55 @@ html.behealthy-html::-webkit-scrollbar-corner {
   background: transparent;
 }
 
+/* Aleens — styled scrollbar — dark thumb, transparent track */
+.aleens {
+  scrollbar-width: thin;
+  scrollbar-color: #111 transparent;
+}
+.aleens::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.aleens::-webkit-scrollbar-track {
+  background: transparent;
+}
+.aleens::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.aleens::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  background-clip: content-box;
+}
+.aleens::-webkit-scrollbar-corner {
+  background: transparent;
+}
+html.aleens-html {
+  scrollbar-width: thin;
+  scrollbar-color: #111 transparent;
+}
+html.aleens-html::-webkit-scrollbar {
+  width: 8px;
+}
+html.aleens-html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html.aleens-html::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+html.aleens-html::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  background-clip: content-box;
+}
+html.aleens-html::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* Global fallback — thin */
 * {
   scrollbar-width: thin;
