@@ -39,7 +39,7 @@ export default function AleensHero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
 
       {/* Title middle-left */}
-      <div className="absolute inset-0 flex items-center max-h-[700px]:items-start max-h-[700px]:pt-20">
+      <div className="absolute inset-0 flex items-start pt-[16vh] max-h-[700px]:items-start max-h-[700px]:pt-20 sm:items-center sm:pt-0">
         <div className="w-full px-8 sm:px-10 lg:px-14 xl:px-16 max-h-[700px]:pt-2">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -73,7 +73,7 @@ export default function AleensHero() {
                     transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
                   },
                 }}
-                className="block text-[48px] leading-[0.85] max-h-[700px]:text-[42px] sm:text-[64px] lg:text-[84px] xl:text-[104px] [@media((max-width:1024px)_and_(max-height:770px))]:text-[42px]"
+                className="block text-[40px] leading-[0.85] max-h-[700px]:text-[36px] sm:text-[64px] lg:text-[84px] xl:text-[104px] [@media((max-width:1024px)_and_(max-height:770px))]:text-[36px]"
               >
                 {word}
               </motion.span>
@@ -88,7 +88,7 @@ export default function AleensHero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap gap-3 [@media((max-width:1024px)_and_(max-height:770px))]:hidden"
+          className="flex flex-wrap gap-3"
         >
           <motion.button
             whileHover={{ scale: 1.02 }}

@@ -122,7 +122,7 @@ export default function MealPlansSection() {
     <section
       id="plans"
       ref={sectionRef}
-      className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-[#00a651] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
+      className="relative flex min-h-[52vh] items-center justify-center overflow-hidden bg-[#00a651] px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32"
     >
       {/* Rectangle lines pattern */}
       <div
